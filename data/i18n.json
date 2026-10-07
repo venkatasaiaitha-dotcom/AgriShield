@@ -1,0 +1,1600 @@
+{
+  "languages": {
+    "ta": {
+      "name": "தமிழ்",
+      "speech_code": "ta-IN",
+      "greeting": "வணக்கம்! அக்ரிஷீல்டிற்கு நல்வரவு.",
+      "ui": {
+        "title": "அக்ரிஷீல்ட் (AgriShield)",
+        "subtitle": "பாதுகாத்தல் • கணித்தல் • நிரூபித்தல் • இழப்பீடு பெறுதல்",
+        "farmer_mode": "விவசாயி குரல் முறை",
+        "officer_mode": "அதிகாரி / காப்பீட்டு முறை",
+        "listen": "🔊 கேளுங்கள்",
+        "speaking": "🔊 பேசுகிறது...",
+        "ask_mic": "🎤 அக்ரிஷீல்டிடம் கேளுங்கள்",
+        "listening": "🎙️ கேட்கிறது... பேசுங்கள்",
+        "select_farmer": "விவசாயியைத் தேர்ந்தெடுக்கவும்",
+        "sample_banner": "மாதிரித் தரவு: சென்டினல்-1 (ரேடார்) மற்றும் சென்டினல்-2 (ஒளியியல்) செயற்கைக்கோள் மாதிரியானது.",
+        "status_healthy": "பயிர் ஆரோக்கியமாக உள்ளது",
+        "status_warning": "பயிரில் நீர் அல்லது நோய் அழுத்தம் உள்ளது",
+        "status_danger": "வெள்ளச் சேதம் கண்டறியப்பட்டுள்ளது",
+        "tab_protect": "1. பாதுகாப்பு (Protect)",
+        "tab_predict": "2. கணிப்பு (Predict)",
+        "tab_prove": "3. நிரூபணம் (Prove)",
+        "tab_pay": "4. இழப்பீடு (Pay)",
+        "tab_insurer": "5. அதிகாரி டாஷ்போர்டு",
+        "tab_compare": "விவசாயிகள் ஒப்பீடு",
+        "health_score": "பயிர் நலம்",
+        "protection_score": "பாதுகாப்பு மதிப்பெண்",
+        "flood_area": "வெள்ளம் பாதித்த பரப்பளவு",
+        "claim_decision": "காப்பீட்டுப் பரிந்துரை",
+        "download_pdf": "📄 இழப்பீட்டு அறிக்கை பதிவிறக்கு (PDF)",
+        "quick_actions": "விரைவு கேள்விகள் (தொட்டு கேளுங்கள்):",
+        "ivr_note": "நடைமுறை பயன்பாட்டில்: இணையம் இல்லாத சாதாரண போன்களுக்கு Twilio/Exotel மூலம் குரல் அழைப்பு மற்றும் SMS அனுப்பப்படும்.",
+        "weather_title": "வானிலை & செயற்கைக்கோள் வளங்கள்",
+        "weather_subtitle": "சென்டினல்-1 ரேடார் ஈரப்பதம், மழை முன்னறிவிப்பு & பயிர் ஆலோசனைகள்",
+        "chatbot_title": "அக்ரிஷீல்ட் AI உதவியாளர் (Chatbot)",
+        "chatbot_subtitle": "பயிர் நலம், வானிலை, இழப்பீடு மற்றும் பயிர் கடன்கள் பற்றி கேளுங்கள்",
+        "loan_portal_title": "பயிர் கடன் & பேரிடர் நிவாரண போர்டல்",
+        "apply_loan_btn": "📝 உடனே கடன் / நிவாரணத்திற்கு விண்ணப்பிக்கவும்",
+        "damage_mapping_title": "எந்த பாதிப்பிற்கு எந்த கடன் / நிவாரணம் கிடைக்கும்?",
+        "requirements_title": "தேவையான ஆவணங்கள் & தகுதிகள்",
+        "where_apply_title": "எங்கே விண்ணப்பிக்க வேண்டும்?",
+        "first_step_title": "விவசாயி எடுக்க வேண்டிய முதல் நடவடிக்கை (First Step)",
+        "loan_app_modal_title": "பயிர் கடன் / பேரிடர் நிவாரண விண்ணப்பம்",
+        "satellite_proof_attached": "செயற்கைக்கோள் சேத அறிக்கை தானாக இணைக்கப்பட்டுள்ளது",
+        "submit_application": "விண்ணப்பத்தைச் சமர்ப்பிக்கவும்",
+        "application_success": "விண்ணப்பம் வெற்றிகரமாகப் பதிவு செய்யப்பட்டது!",
+        "chat_placeholder": "பயிர் நலம், மழை, கடன் பற்றி தமிழில் தட்டச்சு செய்யவும் அல்லது பேசவும்...",
+        "suggestion_title": "இன்றைய பயிர் ஆலோசனை:"
+      },
+      "quick_buttons": {
+        "crop_health": {
+          "label": "பயிர் நலம்",
+          "icon": "🌱",
+          "question": "என் பயிர் எப்படி இருக்கிறது?"
+        },
+        "water_stress": {
+          "label": "தண்ணீர் தேவை",
+          "icon": "💧",
+          "question": "பயிருக்கு தண்ணீர் பாய்ச்ச வேண்டுமா?"
+        },
+        "flood_risk": {
+          "label": "வெள்ள அபாயம்",
+          "icon": "🌧️",
+          "question": "வயலில் வெள்ளம் வருமா?"
+        },
+        "claim_status": {
+          "label": "இழப்பீட்டுப் பணம்",
+          "icon": "💰",
+          "question": "எனக்கு காப்பீட்டுப் பணம் கிடைக்குமா?"
+        },
+        "weekly_task": {
+          "label": "இந்த வார வேலை",
+          "icon": "📅",
+          "question": "இந்த வாரம் நான் என்ன செய்ய வேண்டும்?"
+        },
+        "loan_info": {
+          "label": "கடன் & நிவாரணம்",
+          "icon": "🏦",
+          "question": "எனக்கு என்ன கடன் கிடைக்கும்?"
+        },
+        "weather_info": {
+          "label": "வானிலை தகவல்",
+          "icon": "🌦️",
+          "question": "இன்றைய வானிலை எப்படி உள்ளது?"
+        }
+      },
+      "intents": {
+        "crop_health": {
+          "keywords": [
+            "பயிர்",
+            "ஆரோக்கியம்",
+            "நலம்",
+            "எப்படி",
+            "வளர்ச்சி",
+            "crop",
+            "health"
+          ],
+          "answers": {
+            "plot_1": "முருகன் அவர்களே, உங்கள் பயிர் வாரம் 9ல் நீர் அழுத்தமும், வாரம் 12 வெள்ளத்தால் 78% கடுமையாக பாதிக்கப்பட்டுள்ளது.",
+            "plot_2": "லட்சுமி அவர்களே, சுவர்ணா சப்1 விதை மற்றும் முறையான வடிகால் அமைத்ததால், வெள்ளத்திலும் உங்கள் பயிர் 70% தப்பியுள்ளது.",
+            "plot_3": "செல்வம் அவர்களே, உங்கள் பயிர் முழுப் பருவத்திலும் பசுமையாகவும் மிகுந்த ஆரோக்கியத்துடனும் உள்ளது."
+          }
+        },
+        "water_stress": {
+          "keywords": [
+            "தண்ணீர்",
+            "நீர்",
+            "பாசனம்",
+            "பாய்ச்ச",
+            "ஈரப்பதம்",
+            "water",
+            "irrigation"
+          ],
+          "answers": {
+            "plot_1": "வாரம் 9ல் உங்கள் வயலில் 18% நீர் பற்றாக்குறை இருந்தது. அப்போது பாசனம் செய்யாததால் பயிர் பலவீனமடைந்தது.",
+            "plot_2": "உங்கள் வயலில் தகுந்த ஈரப்பதம் பராமரிக்கப்பட்டது. தற்போது நீர் பாய்ச்ச தேவையில்லை, வடிகால் திறந்திருக்கட்டும்.",
+            "plot_3": "மண்ணில் போதுமான ஈரப்பதம் உள்ளது. அடுத்த 3 நாட்களுக்கு வழக்கமான பாசனம் போதுமானது."
+          }
+        },
+        "flood_risk": {
+          "keywords": [
+            "வெள்ளம்",
+            "மழை",
+            "புயல்",
+            "தண்ணீர் தேக்கம்",
+            "flood",
+            "rain"
+          ],
+          "answers": {
+            "plot_1": "ரேடார் செயற்கைக்கோள் பார்வையில் உங்கள் வயலில் 78% பரப்பளவு நீரில் மூழ்கியுள்ளது உறுதி செய்யப்பட்டுள்ளது.",
+            "plot_2": "ரேடார் பார்வையில் 30% பரப்பில் மட்டுமே நீர் தேங்கியுள்ளது. வடிகால் மதகுகள் செயல்படுவதால் நீர் வடியும்.",
+            "plot_3": "உங்கள் பகுதியில் வெள்ள அபாயம் இல்லை. பயிர் பாதுகாப்பாக உள்ளது."
+          }
+        },
+        "claim_status": {
+          "keywords": [
+            "பணம்",
+            "காப்பீடு",
+            "இழப்பீடு",
+            "கிளைம்",
+            "பரிந்துரை",
+            "claim",
+            "money",
+            "insurance"
+          ],
+          "answers": {
+            "plot_1": "உங்களுக்கு 77% பயிர் இழப்பு கணக்கிடப்பட்டு, உடனடி காப்பீட்டு ஒப்புதல் பரிந்துரைக்கப்பட்டுள்ளது.",
+            "plot_2": "உங்களுக்கு 38% பகுதி இழப்பு கணக்கிடப்பட்டு, கள ஆய்வுக்குப் பின் உடனடி இழப்பீடு பரிந்துரைக்கப்படுகிறது.",
+            "plot_3": "உங்கள் பயிரில் சேதம் ஏதும் இல்லை. இதனால் காப்பீட்டுக் கோரிக்கை தேவையில்லை."
+          }
+        },
+        "weekly_task": {
+          "keywords": [
+            "வேலை",
+            "பணி",
+            "வாரம்",
+            "செய்ய",
+            "உரம்",
+            "மருந்து",
+            "task",
+            "week"
+          ],
+          "answers": {
+            "plot_1": "உடனடியாக வரப்புகளை வெட்டி தேங்கிய மழைநீரை வெளியேற்றுங்கள் மற்றும் கள அலுவலரை தொடர்பு கொள்ளுங்கள்.",
+            "plot_2": "வடிகாலைப் பராமரிக்கவும், வெள்ளம் வடிந்த பின் 1% பொட்டாசியம் குளோரைடு கரைசல் தெளிக்கவும்.",
+            "plot_3": "கதிர் முதிர்ச்சி அடைகிறது. அறுவடைக்கு 10 நாட்களுக்கு முன் வயல் நீரை முழுமையாக வடிக்கவும்."
+          }
+        },
+        "loan_advice": {
+          "keywords": [
+            "loan",
+            "credit",
+            "kcc",
+            "relief",
+            "money",
+            "scheme",
+            "apply",
+            "subsidy",
+            "கடன்",
+            "நிவாரணம்",
+            "லோன்",
+            "ऋण",
+            "कर्ज",
+            "రుణం",
+            "సహాయం",
+            "ಸಾಲ",
+            "ಪರಿಹಾರ",
+            "വായ്പ",
+            "ആശ്വാസം"
+          ],
+          "answers": {
+            "plot_1": "Farmer Murugan: For your 78% flood damage, you are eligible for the PMFBY Flood Mid-Season Claim (up to ₹30,000/acre grant) and KCC Emergency Debt Rescheduling for 3-5 years. First step: Download the AgriShield Satellite Report and submit it at Punnainallur PACCS society within 72 hours.",
+            "plot_2": "Farmer Lakshmi: For your 30% partial flood impact, you qualify for the KCC Emergency Working Capital Top-Up (₹40,000) and PMFBY partial yield claim. First step: Request a joint inspection endorsement with your AgriShield report at Kallaperambur Cooperative Bank.",
+            "plot_3": "Farmer Selvam: Because your crop is 100% healthy, you qualify for the Standard Kisan Credit Card (KCC) Crop Loan up to ₹3,00,000 at 4% subsidized interest or Agriculture Infrastructure Fund (AIF) for solar pumps. First step: Apply online on JanSamarth portal or visit SBI Vallam branch."
+          }
+        },
+        "loan_requirements": {
+          "keywords": [
+            "documents",
+            "requirement",
+            "papers",
+            "patta",
+            "aadhaar",
+            "ஆவணங்கள்",
+            "தேவை",
+            "பட்டா",
+            "दस्तावेज",
+            "कागजात",
+            "పత్రాలు",
+            "పాస్ బుక్",
+            "ದಾಖಲೆಗಳು",
+            "രേഖകൾ"
+          ],
+          "answers": {
+            "plot_1": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_2": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_3": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt."
+          }
+        },
+        "first_step": {
+          "keywords": [
+            "first step",
+            "what to do first",
+            "procedure",
+            "முதல் படி",
+            "முதலில் என்ன",
+            "पहला कदम",
+            "మొదటి అడుగు",
+            "ಮೊದಲ ಹೆಜ್ಜೆ",
+            "ആദ്യ പടി"
+          ],
+          "answers": {
+            "plot_1": "FIRST STEP: 1. Click 'Download Claim PDF' to get your satellite proof. 2. Notify your Village Administrative Officer (VAO) within 72 hours. 3. Click 'Apply for Loan' to register your claim instantly.",
+            "plot_2": "FIRST STEP: 1. Open field drainage channels. 2. Download your AgriShield satellite report. 3. File a partial claim with your local cooperative bank.",
+            "plot_3": "FIRST STEP: 1. Maintain scheduled irrigation for 3 more days. 2. Drain field 10 days before harvest. 3. Apply for seasonal KCC credit for the upcoming cycle."
+          }
+        },
+        "weather_advice": {
+          "keywords": [
+            "weather",
+            "forecast",
+            "rain",
+            "temperature",
+            "humidity",
+            "வானிலை",
+            "மழை",
+            "வெப்பநிலை",
+            "मौसम",
+            "बारिश",
+            "వాతావరణం",
+            "వర్షం",
+            "ಹವಾಮಾನ",
+            "ಮಳೆ",
+            "കാലാവസ്ഥ",
+            "മഴ"
+          ],
+          "answers": {
+            "plot_1": "Weather update: Northeast monsoon rain recorded 210mm with 94% humidity. Satellite shows high soil saturation. Sluices must remain open to flush standing floodwater.",
+            "plot_2": "Weather update: 210mm monsoon storm passed. Humidity 94%. Drainage is functioning well. Plan for 1% Potassium Chloride foliar spray once water drops below 2cm.",
+            "plot_3": "Weather update: Clear skies, temperature 29°C, humidity 72%, rainfall 10mm. Ideal grain-filling weather. No adverse meteorological risk detected."
+          }
+        }
+      },
+      "alerts": {
+        "water_stress": "எச்சரிக்கை: உங்கள் வயலில் நீர் அழுத்தம் கண்டறியப்பட்டது. 2 நாட்களுக்குள் பாசனம் செய்யவும்.",
+        "blast_risk": "எச்சரிக்கை: காற்றில் அதிக ஈரப்பதம் (88%). குலைநோய் பரவ வாய்ப்புள்ளது, டிரைசைக்ளசோல் தெளிக்கவும்.",
+        "flood_warning": "அதிதீவிர எச்சரிக்கை: 180 மிமீ கனமழை மற்றும் வெள்ளம். உடனடியாக வயல் வடிகால் மதகுகளைத் திறந்து விடவும்.",
+        "all_clear": "உங்கள் பயிர் ஆரோக்கியமாக உள்ளது. அடுத்த வாரம் வழக்கமான களப் பணிகளைத் தொடரவும்."
+      }
+    },
+    "hi": {
+      "name": "हिन्दी",
+      "speech_code": "hi-IN",
+      "greeting": "नमस्ते! एग्रीशील्ड में आपका स्वागत है।",
+      "ui": {
+        "title": "एग्रीशील्ड (AgriShield)",
+        "subtitle": "सुरक्षा • पूर्वानुमान • प्रमाण • मुआवजा",
+        "farmer_mode": "किसान वॉयस मोड",
+        "officer_mode": "अधिकारी / बीमा मोड",
+        "listen": "🔊 सुनें",
+        "speaking": "🔊 बोल रहा है...",
+        "ask_mic": "🎤 एग्रीशील्ड से पूछें",
+        "listening": "🎙️ सुन रहा हूँ... बोलिए",
+        "select_farmer": "किसान चुनें",
+        "sample_banner": "नमूना डेटा: सेंटिनल-1 (रडार) और सेंटिनल-2 (ऑप्टिकल) उपग्रह मॉडल पर आधारित।",
+        "status_healthy": "फसल स्वस्थ और सुरक्षित है",
+        "status_warning": "फसल में नमी या रोग का तनाव",
+        "status_danger": "गंभीर बाढ़ नुकसान की पुष्टि",
+        "tab_protect": "1. सुरक्षा (Protect)",
+        "tab_predict": "2. पूर्वानुमान (Predict)",
+        "tab_prove": "3. प्रमाण (Prove)",
+        "tab_pay": "4. भुगतान (Pay)",
+        "tab_insurer": "5. बीमा डैशबोर्ड",
+        "tab_compare": "किसानों की तुलना",
+        "health_score": "फसल स्वास्थ्य",
+        "protection_score": "सुरक्षा स्कोर",
+        "flood_area": "बाढ़ प्रभावित क्षेत्र",
+        "claim_decision": "बीमा दावा निर्णय",
+        "download_pdf": "📄 दावा रिपोर्ट डाउनलोड करें (PDF)",
+        "quick_actions": "त्वरित प्रश्न (आइकन दबाएं):",
+        "ivr_note": "वास्तविक संचालन: बिना इंटरनेट वाले फोन पर Twilio/Exotel द्वारा आईवीआर कॉल और एसएमएस।",
+        "weather_title": "मौसम और उपग्रह संसाधन",
+        "weather_subtitle": "सेंटिनल-1 रडार मिट्टी की नमी, वर्षा पूर्वानुमान और कृषि सलाह",
+        "chatbot_title": "एग्रीशील्ड AI सहायक (Chatbot)",
+        "chatbot_subtitle": "फसल स्वास्थ्य, मौसम, क्षति और कृषि ऋण के बारे में पूछें",
+        "loan_portal_title": "कृषि ऋण एवं आपदा राहत पोर्टल",
+        "apply_loan_btn": "📝 तुरंत ऋण / राहत के लिए आवेदन करें",
+        "damage_mapping_title": "किस नुकसान पर कौन सा ऋण / राहत मिलेगी?",
+        "requirements_title": "आवश्यक दस्तावेज और पात्रता",
+        "where_apply_title": "आवेदन कहाँ करें?",
+        "first_step_title": "किसान को सबसे पहला कदम क्या उठाना चाहिए?",
+        "loan_app_modal_title": "कृषि ऋण / आपदा राहत आवेदन फॉर्म",
+        "satellite_proof_attached": "उपग्रह क्षति सत्यापन रिपोर्ट स्वतः संलग्न",
+        "submit_application": "आवेदन जमा करें",
+        "application_success": "आवेदन सफलतापूर्वक दर्ज कर लिया गया!",
+        "chat_placeholder": "फसल, बारिश, ऋण के बारे में हिन्दी में पूछें...",
+        "suggestion_title": "आज की फसल सलाह:"
+      },
+      "quick_buttons": {
+        "crop_health": {
+          "label": "फसल स्वास्थ्य",
+          "icon": "🌱",
+          "question": "मेरी फसल कैसी है?"
+        },
+        "water_stress": {
+          "label": "पानी की जरूरत",
+          "icon": "💧",
+          "question": "क्या फसल को पानी चाहिए?"
+        },
+        "flood_risk": {
+          "label": "बाढ़ का खतरा",
+          "icon": "🌧️",
+          "question": "क्या खेत में बाढ़ आएगी?"
+        },
+        "claim_status": {
+          "label": "बीमा का पैसा",
+          "icon": "💰",
+          "question": "क्या मुझे बीमा राशि मिलेगी?"
+        },
+        "weekly_task": {
+          "label": "इस हफ्ते का काम",
+          "icon": "📅",
+          "question": "इस हफ्ते मुझे क्या करना चाहिए?"
+        },
+        "loan_info": {
+          "label": "ऋण व राहत",
+          "icon": "🏦",
+          "question": "मुझे कौन सा ऋण मिल सकता है?"
+        },
+        "weather_info": {
+          "label": "मौसम पूर्वानुमान",
+          "icon": "🌦️",
+          "question": "आज का मौसम कैसा है?"
+        }
+      },
+      "intents": {
+        "crop_health": {
+          "keywords": [
+            "फसल",
+            "स्वास्थ्य",
+            "कैसी",
+            "हालत",
+            "पौधा",
+            "crop",
+            "health"
+          ],
+          "answers": {
+            "plot_1": "मुरुगन जी, सप्ताह 9 में पानी की कमी और सप्ताह 12 में बाढ़ से आपकी 78% फसल को भारी नुकसान हुआ है।",
+            "plot_2": "लक्ष्मी जी, स्वर्णा सब1 किस्म और जल निकासी की तैयारी से बाढ़ के बाद भी आपकी 70% फसल सुरक्षित है।",
+            "plot_3": "सेल्वम जी, आपकी फसल पूरे मौसम में हरी-भरी और पूरी तरह स्वस्थ है।"
+          }
+        },
+        "water_stress": {
+          "keywords": [
+            "पानी",
+            "सिंचाई",
+            "नमी",
+            "प्यास",
+            "water",
+            "irrigation"
+          ],
+          "answers": {
+            "plot_1": "सप्ताह 9 में आपके खेत में 18% जल तनाव था, समय पर सिंचाई न होने से फसल कमजोर हुई।",
+            "plot_2": "आपके खेत में पर्याप्त नमी है, अभी अतिरिक्त पानी देने की जरूरत नहीं है।",
+            "plot_3": "खेत में नमी का स्तर उत्तम है, आगामी 3 दिनों तक सामान्य सिंचाई जारी रखें।"
+          }
+        },
+        "flood_risk": {
+          "keywords": [
+            "बाढ़",
+            "बारिश",
+            "पानी भर गया",
+            "जलभराव",
+            "flood",
+            "rain"
+          ],
+          "answers": {
+            "plot_1": "रडार उपग्रह के अनुसार आपके खेत का 78% भाग जलमग्न हो चुका है।",
+            "plot_2": "रडार डेटा दिखाता है कि मजबूत मेड़ों के कारण केवल 30% क्षेत्र में पानी भरा है।",
+            "plot_3": "आपके खेत में बाढ़ का कोई खतरा नहीं है, फसल सुरक्षित है।"
+          }
+        },
+        "claim_status": {
+          "keywords": [
+            "पैसा",
+            "बीमा",
+            "मुआवजा",
+            "क्लेम",
+            "claim",
+            "money",
+            "insurance"
+          ],
+          "answers": {
+            "plot_1": "आपका नुकसान स्कोर 77% है। तत्काल बीमा भुगतान स्वीकृत करने की सिफारिश की गई है।",
+            "plot_2": "आपका नुकसान 38% है। त्वरित सत्यापन के बाद आंशिक मुआवजा अनुशंसित है।",
+            "plot_3": "आपकी फसल में कोई नुकसान नहीं हुआ है, इसलिए दावे की आवश्यकता नहीं है।"
+          }
+        },
+        "weekly_task": {
+          "keywords": [
+            "काम",
+            "कार्य",
+            "हफ्ते",
+            "खाद",
+            "स्प्रे",
+            "task",
+            "week"
+          ],
+          "answers": {
+            "plot_1": "तुरंत खेत की मेड़ काटकर जमा हुआ पानी निकालें और कृषि अधिकारी से संपर्क करें।",
+            "plot_2": "जल निकासी जारी रखें और पानी उतरने के बाद 1% पोटेशियम क्लोराइड का छिड़काव करें।",
+            "plot_3": "फसल पकने की अवस्था में है, कटाई से 10 दिन पहले खेत का पानी सुखा दें।"
+          }
+        },
+        "loan_advice": {
+          "keywords": [
+            "loan",
+            "credit",
+            "kcc",
+            "relief",
+            "money",
+            "scheme",
+            "apply",
+            "subsidy",
+            "கடன்",
+            "நிவாரணம்",
+            "லோன்",
+            "ऋण",
+            "कर्ज",
+            "రుణం",
+            "సహాయం",
+            "ಸಾಲ",
+            "ಪರಿಹಾರ",
+            "വായ്പ",
+            "ആശ്വാസം"
+          ],
+          "answers": {
+            "plot_1": "Farmer Murugan: For your 78% flood damage, you are eligible for the PMFBY Flood Mid-Season Claim (up to ₹30,000/acre grant) and KCC Emergency Debt Rescheduling for 3-5 years. First step: Download the AgriShield Satellite Report and submit it at Punnainallur PACCS society within 72 hours.",
+            "plot_2": "Farmer Lakshmi: For your 30% partial flood impact, you qualify for the KCC Emergency Working Capital Top-Up (₹40,000) and PMFBY partial yield claim. First step: Request a joint inspection endorsement with your AgriShield report at Kallaperambur Cooperative Bank.",
+            "plot_3": "Farmer Selvam: Because your crop is 100% healthy, you qualify for the Standard Kisan Credit Card (KCC) Crop Loan up to ₹3,00,000 at 4% subsidized interest or Agriculture Infrastructure Fund (AIF) for solar pumps. First step: Apply online on JanSamarth portal or visit SBI Vallam branch."
+          }
+        },
+        "loan_requirements": {
+          "keywords": [
+            "documents",
+            "requirement",
+            "papers",
+            "patta",
+            "aadhaar",
+            "ஆவணங்கள்",
+            "தேவை",
+            "பட்டா",
+            "दस्तावेज",
+            "कागजात",
+            "పత్రాలు",
+            "పాస్ బుక్",
+            "ದಾಖಲೆಗಳು",
+            "രേഖകൾ"
+          ],
+          "answers": {
+            "plot_1": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_2": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_3": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt."
+          }
+        },
+        "first_step": {
+          "keywords": [
+            "first step",
+            "what to do first",
+            "procedure",
+            "முதல் படி",
+            "முதலில் என்ன",
+            "पहला कदम",
+            "మొదటి అడుగు",
+            "ಮೊದಲ ಹೆಜ್ಜೆ",
+            "ആദ്യ പടി"
+          ],
+          "answers": {
+            "plot_1": "FIRST STEP: 1. Click 'Download Claim PDF' to get your satellite proof. 2. Notify your Village Administrative Officer (VAO) within 72 hours. 3. Click 'Apply for Loan' to register your claim instantly.",
+            "plot_2": "FIRST STEP: 1. Open field drainage channels. 2. Download your AgriShield satellite report. 3. File a partial claim with your local cooperative bank.",
+            "plot_3": "FIRST STEP: 1. Maintain scheduled irrigation for 3 more days. 2. Drain field 10 days before harvest. 3. Apply for seasonal KCC credit for the upcoming cycle."
+          }
+        },
+        "weather_advice": {
+          "keywords": [
+            "weather",
+            "forecast",
+            "rain",
+            "temperature",
+            "humidity",
+            "வானிலை",
+            "மழை",
+            "வெப்பநிலை",
+            "मौसम",
+            "बारिश",
+            "వాతావరణం",
+            "వర్షం",
+            "ಹವಾಮಾನ",
+            "ಮಳೆ",
+            "കാലാവസ്ഥ",
+            "മഴ"
+          ],
+          "answers": {
+            "plot_1": "Weather update: Northeast monsoon rain recorded 210mm with 94% humidity. Satellite shows high soil saturation. Sluices must remain open to flush standing floodwater.",
+            "plot_2": "Weather update: 210mm monsoon storm passed. Humidity 94%. Drainage is functioning well. Plan for 1% Potassium Chloride foliar spray once water drops below 2cm.",
+            "plot_3": "Weather update: Clear skies, temperature 29°C, humidity 72%, rainfall 10mm. Ideal grain-filling weather. No adverse meteorological risk detected."
+          }
+        }
+      },
+      "alerts": {
+        "water_stress": "चेतावनी: खेत में नमी की कमी पाई गई। अगले 48 घंटों में हल्की सिंचाई करें।",
+        "blast_risk": "चेतावनी: हवा में 88% नमी। ब्लास्ट रोग का खतरा अधिक है, तुरंत अनुशंसित कवकनाशी छिड़कें।",
+        "flood_warning": "गंभीर चेतावनी: 180 मिमी भारी बारिश और बाढ़। खेत के जल निकासी निकास तुरंत खोलें।",
+        "all_clear": "आपकी फसल स्वस्थ है। सामान्य देखरेख जारी रखें।"
+      }
+    },
+    "te": {
+      "name": "తెలుగు",
+      "speech_code": "te-IN",
+      "greeting": "నమస్కారం! అగ్రిషీల్డ్‌కు స్వాగతం.",
+      "ui": {
+        "title": "అగ్రిషీల్డ్ (AgriShield)",
+        "subtitle": "రక్షణ • అంచనా • రుజువు • పరిహారం",
+        "farmer_mode": "రైతు వాయిస్ మోడ్",
+        "officer_mode": "అధికారి / బీమా మోడ్",
+        "listen": "🔊 వినండి",
+        "speaking": "🔊 మాట్లాడుతోంది...",
+        "ask_mic": "🎤 అగ్రిషీల్డ్‌ను అడగండి",
+        "listening": "🎙️ వింటున్నాను... మాట్లాడండి",
+        "select_farmer": "రైతును ఎంచుకోండి",
+        "sample_banner": "నమూనా డేటా: సెంటినెల్-1 (రాడార్) మరియు సెంటినెల్-2 ఉపగ్రహ నమూనా ఆధారితం.",
+        "status_healthy": "పంట ఆరోగ్యంగా ఉంది",
+        "status_warning": "పంటలో నీటి లేదా తెగులు ఒత్తిడి",
+        "status_danger": "తీవ్రమైన వరద నష్టం నిర్ధారించబడింది",
+        "tab_protect": "1. రక్షణ (Protect)",
+        "tab_predict": "2. అంచనా (Predict)",
+        "tab_prove": "3. రుజువు (Prove)",
+        "tab_pay": "4. పరిహారం (Pay)",
+        "tab_insurer": "5. బీమా డాష్‌బోర్డ్",
+        "tab_compare": "రైతుల పోలిక",
+        "health_score": "పంట ఆరోగ్యం",
+        "protection_score": "రక్షణ స్కోరు",
+        "flood_area": "వరద ప్రభావిత విస్తీర్ణం",
+        "claim_decision": "క్లెయిమ్ సిఫార్సు",
+        "download_pdf": "📄 క్లెయిమ్ నివేదిక డౌన్‌లోడ్ (PDF)",
+        "quick_actions": "త్వరిత ప్రశ్నలు (తాకండి):",
+        "ivr_note": "నిజమైన అమలులో: ఇంటర్నెట్ లేని సాధారణ ఫోన్లకు Twilio/Exotel ద్వారా IVR కాల్ మరియు SMS అందుతుంది.",
+        "weather_title": "వాతావరణం & ఉపగ్రహ వనరులు",
+        "weather_subtitle": "సెంటినెల్-1 రాడార్ తేమ, వర్షపాత సూచన మరియు పంట సూచనలు",
+        "chatbot_title": "అగ్రిషీల్డ్ AI సహాయకుడు (Chatbot)",
+        "chatbot_subtitle": "పంట ఆరోగ్యం, వాతావరణం మరియు వ్యవసాయ రుణాల గురించి అడగండి",
+        "loan_portal_title": "పంట రుణాలు & విపత్తు సహాయ పోర్టల్",
+        "apply_loan_btn": "📝 వెంటనే రుణం / సహాయం కోసం దరఖాస్తు చేయండి",
+        "damage_mapping_title": "ఏ నష్టానికి ఏ రుణం వర్తిస్తుంది?",
+        "requirements_title": "అవసరమైన పత్రాలు & అర్హతలు",
+        "where_apply_title": "ఎక్కడ దరఖాస్తు చేయాలి?",
+        "first_step_title": "రైతు తీసుకోవలసిన మొదటి చర్య (First Step)",
+        "loan_app_modal_title": "పంట రుణం / విపత్తు సహాయ దరఖాస్తు",
+        "satellite_proof_attached": "ఉపగ్రహ నష్ట నివేదిక ఆటోమేటిక్‌గా జతచేయబడింది",
+        "submit_application": "దరఖాస్తు సమర్పించండి",
+        "application_success": "దరఖాస్తు విజయవంతంగా నమోదైంది!",
+        "chat_placeholder": "పంట, వర్షం, రుణాల గురించి తెలుగులో అడగండి...",
+        "suggestion_title": "నేటి పంట సలహా:"
+      },
+      "quick_buttons": {
+        "crop_health": {
+          "label": "పంట ఆరోగ్యం",
+          "icon": "🌱",
+          "question": "నా పంట ఎలా ఉంది?"
+        },
+        "water_stress": {
+          "label": "నీటి అవసరం",
+          "icon": "💧",
+          "question": "పంటకు నీరు పెట్టాలా?"
+        },
+        "flood_risk": {
+          "label": "వరద ప్రమాదం",
+          "icon": "🌧️",
+          "question": "చేనులో వరద వస్తుందా?"
+        },
+        "claim_status": {
+          "label": "బీమా పరిహారం",
+          "icon": "💰",
+          "question": "నాకు బీమా సొమ్ము వస్తుందా?"
+        },
+        "weekly_task": {
+          "label": "ఈ వారం పని",
+          "icon": "📅",
+          "question": "ఈ వారం నేను ఏమి చేయాలి?"
+        },
+        "loan_info": {
+          "label": "పంట రుణాలు",
+          "icon": "🏦",
+          "question": "నాకు ఏ రుణం వస్తుంది?"
+        },
+        "weather_info": {
+          "label": "వాతావరణ సమాచారం",
+          "icon": "🌦️",
+          "question": "ఈ రోజు వాతావరణం ఎలా ఉంది?"
+        }
+      },
+      "intents": {
+        "crop_health": {
+          "keywords": [
+            "పంట",
+            "ఆరోగ్యం",
+            "ఎలా",
+            "స్థితి",
+            "చెట్టు",
+            "crop",
+            "health"
+          ],
+          "answers": {
+            "plot_1": "మురుగన్ గారు, వారం 9లో నీటి కొరత మరియు వారం 12 వరద వల్ల మీ పంట 78% తీవ్రంగా దెబ్బతింది.",
+            "plot_2": "లక్ష్మి గారు, స్వర్ణ సబ్1 రకం మరియు డ్రైనేజీ వల్ల వరద ఉన్నప్పటికీ మీ పంట 70% క్షేమంగా ఉంది.",
+            "plot_3": "సెల్వం గారు, మీ పంట కాలం అంతా పచ్చగా ఎంతో ఆరోగ్యంగా ఉంది."
+          }
+        },
+        "water_stress": {
+          "keywords": [
+            "నీరు",
+            "తడి",
+            "నీళ్లు",
+            "తేమ",
+            "water",
+            "irrigation"
+          ],
+          "answers": {
+            "plot_1": "వారం 9లో చేనులో 18% నీటి ఎద్దడి వచ్చింది, సమయానికి నీరు ఇవ్వకపోవడం వల్ల పంట బలహీనపడింది.",
+            "plot_2": "మీ చేనులో తగినంత తేమ ఉంది, ప్రస్తుతం అదనపు నీరు అవసరం లేదు.",
+            "plot_3": "చేనులో తేమ అనుకూలంగా ఉంది, రాబోయే 3 రోజులు సాధారణ నీటి పారుదల చాలు."
+          }
+        },
+        "flood_risk": {
+          "keywords": [
+            "వరద",
+            "వర్షం",
+            "ముంపు",
+            "నీరు నిలవడం",
+            "flood",
+            "rain"
+          ],
+          "answers": {
+            "plot_1": "రాడార్ ఉపగ్రహం ద్వారా మీ పొలంలో 78% మేర నీటిలో మునిగిపోయినట్లు తేలింది.",
+            "plot_2": "రాడార్ పరిశీలనలో 30% మాత్రమే నీరు నిలిచింది, గట్లు పటిష్టంగా ఉన్నాయి.",
+            "plot_3": "మీ పొలానికి ఎలాంటి వరద ముప్పు లేదు, పంట సురక్షితం."
+          }
+        },
+        "claim_status": {
+          "keywords": [
+            "డబ్బులు",
+            "బీమా",
+            "క్లెయిమ్",
+            "పరిహారం",
+            "claim",
+            "money",
+            "insurance"
+          ],
+          "answers": {
+            "plot_1": "మీకు 77% నష్టం గుర్తించబడింది. తక్షణ బీమా చెల్లింపు ఆమోదం సిఫార్సు చేయబడింది.",
+            "plot_2": "మీకు 38% నష్టం ఉంది, తనిఖీ తర్వాత పాక్షిక పరిహారం అందుతుంది.",
+            "plot_3": "మీ పంటకు ఎటువంటి నష్టం జరగలేదు, కాబట్టి బీమా అవసరం లేదు."
+          }
+        },
+        "weekly_task": {
+          "keywords": [
+            "పని",
+            "వారం",
+            "ఎరువు",
+            "మందు",
+            "స్ప్రే",
+            "task",
+            "week"
+          ],
+          "answers": {
+            "plot_1": "వెంటనే గట్లను తెంపి చేనులోని నీటిని బయటకు పంపండి, వ్యవసాయ అధికారిని సంప్రదించండి.",
+            "plot_2": "నీటిని బయటకు పంపుతూ ఉండండి, నీరు తగ్గాక 1% పొటాషియం క్లోరైడ్ పిచికారీ చేయండి.",
+            "plot_3": "కోతకు 10 రోజుల ముందు చేనులోని నీటిని పూర్తిగా తీసివేయండి."
+          }
+        },
+        "loan_advice": {
+          "keywords": [
+            "loan",
+            "credit",
+            "kcc",
+            "relief",
+            "money",
+            "scheme",
+            "apply",
+            "subsidy",
+            "கடன்",
+            "நிவாரணம்",
+            "லோன்",
+            "ऋण",
+            "कर्ज",
+            "రుణం",
+            "సహాయం",
+            "ಸಾಲ",
+            "ಪರಿಹಾರ",
+            "വായ്പ",
+            "ആശ്വാസം"
+          ],
+          "answers": {
+            "plot_1": "Farmer Murugan: For your 78% flood damage, you are eligible for the PMFBY Flood Mid-Season Claim (up to ₹30,000/acre grant) and KCC Emergency Debt Rescheduling for 3-5 years. First step: Download the AgriShield Satellite Report and submit it at Punnainallur PACCS society within 72 hours.",
+            "plot_2": "Farmer Lakshmi: For your 30% partial flood impact, you qualify for the KCC Emergency Working Capital Top-Up (₹40,000) and PMFBY partial yield claim. First step: Request a joint inspection endorsement with your AgriShield report at Kallaperambur Cooperative Bank.",
+            "plot_3": "Farmer Selvam: Because your crop is 100% healthy, you qualify for the Standard Kisan Credit Card (KCC) Crop Loan up to ₹3,00,000 at 4% subsidized interest or Agriculture Infrastructure Fund (AIF) for solar pumps. First step: Apply online on JanSamarth portal or visit SBI Vallam branch."
+          }
+        },
+        "loan_requirements": {
+          "keywords": [
+            "documents",
+            "requirement",
+            "papers",
+            "patta",
+            "aadhaar",
+            "ஆவணங்கள்",
+            "தேவை",
+            "பட்டா",
+            "दस्तावेज",
+            "कागजात",
+            "పత్రాలు",
+            "పాస్ బుక్",
+            "ದಾಖಲೆಗಳು",
+            "രേഖകൾ"
+          ],
+          "answers": {
+            "plot_1": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_2": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_3": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt."
+          }
+        },
+        "first_step": {
+          "keywords": [
+            "first step",
+            "what to do first",
+            "procedure",
+            "முதல் படி",
+            "முதலில் என்ன",
+            "पहला कदम",
+            "మొదటి అడుగు",
+            "ಮೊದಲ ಹೆಜ್ಜೆ",
+            "ആദ്യ പടി"
+          ],
+          "answers": {
+            "plot_1": "FIRST STEP: 1. Click 'Download Claim PDF' to get your satellite proof. 2. Notify your Village Administrative Officer (VAO) within 72 hours. 3. Click 'Apply for Loan' to register your claim instantly.",
+            "plot_2": "FIRST STEP: 1. Open field drainage channels. 2. Download your AgriShield satellite report. 3. File a partial claim with your local cooperative bank.",
+            "plot_3": "FIRST STEP: 1. Maintain scheduled irrigation for 3 more days. 2. Drain field 10 days before harvest. 3. Apply for seasonal KCC credit for the upcoming cycle."
+          }
+        },
+        "weather_advice": {
+          "keywords": [
+            "weather",
+            "forecast",
+            "rain",
+            "temperature",
+            "humidity",
+            "வானிலை",
+            "மழை",
+            "வெப்பநிலை",
+            "मौसम",
+            "बारिश",
+            "వాతావరణం",
+            "వర్షం",
+            "ಹವಾಮಾನ",
+            "ಮಳೆ",
+            "കാലാവസ്ഥ",
+            "മഴ"
+          ],
+          "answers": {
+            "plot_1": "Weather update: Northeast monsoon rain recorded 210mm with 94% humidity. Satellite shows high soil saturation. Sluices must remain open to flush standing floodwater.",
+            "plot_2": "Weather update: 210mm monsoon storm passed. Humidity 94%. Drainage is functioning well. Plan for 1% Potassium Chloride foliar spray once water drops below 2cm.",
+            "plot_3": "Weather update: Clear skies, temperature 29°C, humidity 72%, rainfall 10mm. Ideal grain-filling weather. No adverse meteorological risk detected."
+          }
+        }
+      },
+      "alerts": {
+        "water_stress": "హెచ్చరిక: చేనులో నీటి ఎద్దడి కనిపించింది. 48 గంటల్లో నీరు పెట్టండి.",
+        "blast_risk": "హెచ్చరిక: గాలిలో 88% తేమ. అగ్గి తెగులు సోకే ప్రమాదం ఉంది, మందు పిచికారీ చేయండి.",
+        "flood_warning": "తీవ్ర హెచ్చరిక: 180 మిమీ భారీ వర్షం. పొలం డ్రైనేజీ తూములను వెంటనే తెరవండి.",
+        "all_clear": "పంట ఆరోగ్యంగా ఉంది. సాధారణ పనులు కొనసాగించండి."
+      }
+    },
+    "kn": {
+      "name": "ಕನ್ನಡ",
+      "speech_code": "kn-IN",
+      "greeting": "ನಮಸ್ಕಾರ! ಅಗ್ರಿಶೀಲ್ಡ್‌ಗೆ ಸುಸ್ವಾಗತ.",
+      "ui": {
+        "title": "ಅಗ್ರಿಶೀಲ್ಡ್ (AgriShield)",
+        "subtitle": "ರಕ್ಷಣೆ • ಮುನ್ಸೂಚನೆ • ಸಾಬೀತು • ಪರಿಹಾರ",
+        "farmer_mode": "ರೈತ ಧ್ವನಿ ಮೋಡ್",
+        "officer_mode": "ಅಧಿಕಾರಿ / ವಿಮಾ ಮೋಡ್",
+        "listen": "🔊 ಆಲಿಸಿ",
+        "speaking": "🔊 ಮಾತನಾಡುತ್ತಿದೆ...",
+        "ask_mic": "🎤 ಅಗ್ರಿಶೀಲ್ಡ್‌ಗೆ ಕೇಳಿ",
+        "listening": "🎙️ ಕೇಳಿಸಿಕೊಳ್ಳುತ್ತಿದ್ದೇನೆ... ಮಾತನಾಡಿ",
+        "select_farmer": "ರೈತರನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+        "sample_banner": "ಮಾದರಿ ಡೇಟಾ: ಸೆಂಟಿನೆಲ್-1 (ರಾಡಾರ್) ಮತ್ತು ಸೆಂಟಿನೆಲ್-2 ಮಾದರಿ ಆಧರಿತ.",
+        "status_healthy": "ಬೆಳೆ ಆರೋಗ್ಯಕರವಾಗಿದೆ",
+        "status_warning": "ನೀರಿನ ಅಥವಾ ರೋಗದ ಒತ್ತಡ",
+        "status_danger": "ತೀವ್ರ ಪ್ರವಾಹ ಹಾನಿ ದೃಢಪಟ್ಟಿದೆ",
+        "tab_protect": "1. ರಕ್ಷಣೆ (Protect)",
+        "tab_predict": "2. ಮುನ್ಸೂಚನೆ (Predict)",
+        "tab_prove": "3. ಸಾಬೀತು (Prove)",
+        "tab_pay": "4. ಪರಿಹಾರ (Pay)",
+        "tab_insurer": "5. ವಿಮಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        "tab_compare": "ರೈತರ ಹೋಲಿಕೆ",
+        "health_score": "ಬೆಳೆ ಆರೋಗ್ಯ",
+        "protection_score": "ರಕ್ಷಣಾ ಸ್ಕೋರ್",
+        "flood_area": "ಪ್ರವಾಹ ಪೀಡಿತ ಪ್ರದೇಶ",
+        "claim_decision": "ವಿಮಾ ಕ್ಲೈಮ್ ನಿರ್ಧಾರ",
+        "download_pdf": "📄 ಕ್ಲೈಮ್ ವರದಿ ಡೌನ್‌ಲೋಡ್ (PDF)",
+        "quick_actions": "ತ್ವರಿತ ಪ್ರಶ್ನೆಗಳು (ಸ್ಪರ್ಶಿಸಿ):",
+        "ivr_note": "ನೈಜ ಬಳಕೆಯಲ್ಲಿ: ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದ ಸಾಮಾನ್ಯ ಫೋನ್‌ಗಳಿಗೆ Twilio/Exotel ಮೂಲಕ ಧ್ವನಿ ಕರೆ ಮತ್ತು SMS ಲಭ್ಯ.",
+        "weather_title": "ಹವಾಮಾನ ಮತ್ತು ಉಪಗ್ರಹ ಸಂಪನ್ಮೂಲಗಳು",
+        "weather_subtitle": "ಸೆಂಟಿನೆಲ್-1 ರಾಡಾರ್ ತೇವಾಂಶ, ಮಳೆ ಮುನ್ಸೂಚನೆ ಮತ್ತು ಕೃಷಿ ಸಲಹೆಗಳು",
+        "chatbot_title": "ಅಗ್ರಿಶೀಲ್ಡ್ AI ಸಹಾಯಕ (Chatbot)",
+        "chatbot_subtitle": "ಬೆಳೆ ಆರೋಗ್ಯ, ಹವಾಮಾನ ಮತ್ತು ಕೃಷಿ ಸಾಲಗಳ ಬಗ್ಗೆ ಕೇಳಿ",
+        "loan_portal_title": "ಬೆಳೆ ಸಾಲ ಮತ್ತು ವಿಪತ್ತು ಪರಿಹಾರ ಪೋರ್ಟಲ್",
+        "apply_loan_btn": "📝 ತಕ್ಷಣವೇ ಸಾಲ / ಪರಿಹಾರಕ್ಕೆ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+        "damage_mapping_title": "ಯಾವ ಹಾನಿಗೆ ಯಾವ ಸಾಲ ಲಭ್ಯವಿದೆ?",
+        "requirements_title": "ಅಗತ್ಯವಿರುವ ದಾಖಲೆಗಳು ಮತ್ತು ಅರ್ಹತೆ",
+        "where_apply_title": "ಎಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬೇಕು?",
+        "first_step_title": "ರೈತರು ತೆಗೆದುಕೊಳ್ಳಬೇಕಾದ ಮೊದಲ ಹೆಜ್ಜೆ",
+        "loan_app_modal_title": "ಕೃಷಿ ಸಾಲ / ಪರಿಹಾರ ಅರ್ಜಿ ನಮೂನೆ",
+        "satellite_proof_attached": "ಉಪಗ್ರಹ ಹಾನಿ ವರದಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಲಗತ್ತಿಸಲಾಗಿದೆ",
+        "submit_application": "ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+        "application_success": "ಅರ್ಜಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಸಲ್ಲಿಸಲಾಗಿದೆ!",
+        "chat_placeholder": "ಬೆಳೆ, ಮಳೆ, ಸಾಲದ ಬಗ್ಗೆ ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ...",
+        "suggestion_title": "ಇಂದಿನ ಬೆಳೆ ಸಲಹೆ:"
+      },
+      "quick_buttons": {
+        "crop_health": {
+          "label": "ಬೆಳೆ ಆರೋಗ್ಯ",
+          "icon": "🌱",
+          "question": "ನನ್ನ ಬೆಳೆ ಹೇಗಿದೆ?"
+        },
+        "water_stress": {
+          "label": "ನೀರಿನ ಅವಶ್ಯಕತೆ",
+          "icon": "💧",
+          "question": "ಬೆಳೆಗೆ ನೀರು ಬೇಕೇ?"
+        },
+        "flood_risk": {
+          "label": "ಪ್ರವಾಹದ ಭೀತಿ",
+          "icon": "🌧️",
+          "question": "ಗದ್ದೆಯಲ್ಲಿ ಪ್ರವಾಹ ಬರುತ್ತದೆಯೇ?"
+        },
+        "claim_status": {
+          "label": "ವಿಮಾ ಹಣ",
+          "icon": "💰",
+          "question": "ನನಗೆ ವಿಮಾ ಹಣ ಸಿಗುತ್ತದೆಯೇ?"
+        },
+        "weekly_task": {
+          "label": "ಈ ವಾರದ ಕೆಲಸ",
+          "icon": "📅",
+          "question": "ಈ ವಾರ ನಾನು ಏನು ಮಾಡಬೇಕು?"
+        },
+        "loan_info": {
+          "label": "ಬೆಳೆ ಸಾಲ",
+          "icon": "🏦",
+          "question": "ನನಗೆ ಯಾವ ಸಾಲ ಸಿಗುತ್ತದೆ?"
+        },
+        "weather_info": {
+          "label": "ಹವಾಮಾನ ಮಾಹಿತಿ",
+          "icon": "🌦️",
+          "question": "ಇಂದಿನ ಹವಾಮಾನ ಹೇಗಿದೆ?"
+        }
+      },
+      "intents": {
+        "crop_health": {
+          "keywords": [
+            "ಬೆಳೆ",
+            "ಆರೋಗ್ಯ",
+            "ಹೇಗಿದೆ",
+            "ಸ್ಥಿತಿ",
+            "ಗಿಡ",
+            "crop",
+            "health"
+          ],
+          "answers": {
+            "plot_1": "ಮುರುಗನ್ ಅವರೇ, ವಾರ 9 ರಲ್ಲಿ ನೀರಿನ ಕೊರತೆ ಮತ್ತು ವಾರ 12 ರ ಪ್ರವಾಹದಿಂದ ನಿಮ್ಮ ಶೇ. 78 ಬೆಳೆ ತೀವ್ರವಾಗಿ ಹಾನಿಗೊಳಗಾಗಿದೆ.",
+            "plot_2": "ಲಕ್ಷ್ಮಿ ಅವರೇ, ಸ್ವರ್ಣ ಸಬ್1 ತಳಿ ಮತ್ತು ಬಸಿಗಾಲುವೆಯಿಂದಾಗಿ ಪ್ರವಾಹದ ನಡುವೆಯೂ ನಿಮ್ಮ ಶೇ. 70 ಬೆಳೆ ಸುರಕ್ಷಿತವಾಗಿದೆ.",
+            "plot_3": "ಸೆಲ್ವಂ ಅವರೇ, ನಿಮ್ಮ ಬೆಳೆಯು ಋತುವಿನುದ್ದಕ್ಕೂ ಹಸಿರಾಗಿ ಅತ್ಯುತ್ತಮ ಆರೋಗ್ಯದಲ್ಲಿದೆ."
+          }
+        },
+        "water_stress": {
+          "keywords": [
+            "ನೀರು",
+            "ತೇವಾಂಶ",
+            "ನೀರಾವರಿ",
+            "ಕುಡಿಯಲು",
+            "water",
+            "irrigation"
+          ],
+          "answers": {
+            "plot_1": "ವಾರ 9 ರಲ್ಲಿ ತೇವಾಂಶದ ಕೊರತೆ ಕಂಡುಬಂದಿತ್ತು, ಸರಿಯಾದ ಸಮಯದಲ್ಲಿ ನೀರುಣಿಸದ ಕಾರಣ ಗಿಡಗಳು ದುರ್ಬಲಗೊಂಡವು.",
+            "plot_2": "ನಿಮ್ಮ ಗದ್ದೆಯಲ್ಲಿ ಸೂಕ್ತ ತೇವಾಂಶವಿದೆ, ಈಗ ಹೆಚ್ಚುವರಿ ನೀರು ಹಾಯಿಸುವ ಅಗತ್ಯವಿಲ್ಲ.",
+            "plot_3": "ಮಣ್ಣಿನಲ್ಲಿ ಸಮೃದ್ಧ ತೇವಾಂಶವಿದೆ, ಮುಂದಿನ 3 ದಿನಗಳಿಗೆ ಸಾಮಾನ್ಯ ನೀರಾವರಿ ಸಾಕು."
+          }
+        },
+        "flood_risk": {
+          "keywords": [
+            "ಪ್ರವಾಹ",
+            "ಮಳೆ",
+            "ನೀರು ನಿಂತಿದೆ",
+            "ಮುಳುಗಡೆ",
+            "flood",
+            "rain"
+          ],
+          "answers": {
+            "plot_1": "ರಾಡಾರ್ ಉಪಗ್ರಹದ ಪ್ರಕಾರ ನಿಮ್ಮ ಶೇ. 78 ರಷ್ಟು ಗದ್ದೆ ನೀರಿನಲ್ಲಿ ಮುಳುಗಿದೆ.",
+            "plot_2": "ರಾಡಾರ್ ಮಾಹಿತಿಯಂತೆ ಕೇವಲ ಶೇ. 30 ರಷ್ಟು ಪ್ರದೇಶದಲ್ಲಿ ನೀರಿದೆ, ಬದುಗಳು ಭದ್ರವಾಗಿವೆ.",
+            "plot_3": "ನಿಮ್ಮ ಜಮೀನಿಗೆ ಯಾವುದೇ ಪ್ರವಾಹದ ಅಪಾಯವಿಲ್ಲ."
+          }
+        },
+        "claim_status": {
+          "keywords": [
+            "ಹಣ",
+            "ವಿಮೆ",
+            "ಕ್ಲೈಮ್",
+            "ಪರಿಹಾರ",
+            "claim",
+            "money",
+            "insurance"
+          ],
+          "answers": {
+            "plot_1": "ನಿಮಗೆ ಶೇ. 77 ರಷ್ಟು ನಷ್ಟವಾಗಿದೆ. ತಕ್ಷಣದ ವಿಮಾ ಕ್ಲೈಮ್ ಮಂಜೂರಾತಿಗೆ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ.",
+            "plot_2": "ನಿಮಗೆ ಶೇ. 38 ರಷ್ಟು ನಷ್ಟವಿದೆ, ಪರಿಶೀಲನೆಯ ನಂತರ ಭಾಗಶಃ ಪರಿಹಾರ ಲಭ್ಯವಾಗಲಿದೆ.",
+            "plot_3": "ನಿಮ್ಮ ಬೆಳೆಗೆ ಯಾವುದೇ ಹಾನಿಯಾಗಿಲ್ಲ, ಹಾಗಾಗಿ ವಿಮೆ ಅಗತ್ಯವಿಲ್ಲ."
+          }
+        },
+        "weekly_task": {
+          "keywords": [
+            "ಕೆಲಸ",
+            "ವಾರ",
+            "ಗೊಬ್ಬರ",
+            "ಔಷಧಿ",
+            "task",
+            "week"
+          ],
+          "answers": {
+            "plot_1": "ತಕ್ಷಣ ಬದುಗಳನ್ನು ಸೀಳಿ ನಿಂತ ನೀರನ್ನು ಹೊರಹಾಕಿ, ಕೃಷಿ ಅಧಿಕಾರಿಯನ್ನು ಭೇಟಿ ಮಾಡಿ.",
+            "plot_2": "ಬಸಿಗಾಲುವೆಗಳನ್ನು ತೆರೆದಿಡಿ, ನೀರು ಇಳಿದ ನಂತರ ಶೇ. 1 ಪೊಟ್ಯಾಸಿಯಮ್ ಕ್ಲೋರೈಡ್ ಸಿಂಪಡಿಸಿ.",
+            "plot_3": "ಕೊಯ್ಲಿಗೆ 10 ದಿನಗಳ ಮೊದಲು ಗದ್ದೆಯ ನೀರನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಬಸಿದುಬಿಡಿ."
+          }
+        },
+        "loan_advice": {
+          "keywords": [
+            "loan",
+            "credit",
+            "kcc",
+            "relief",
+            "money",
+            "scheme",
+            "apply",
+            "subsidy",
+            "கடன்",
+            "நிவாரணம்",
+            "லோன்",
+            "ऋण",
+            "कर्ज",
+            "రుణం",
+            "సహాయం",
+            "ಸಾಲ",
+            "ಪರಿಹಾರ",
+            "വായ്പ",
+            "ആശ്വാസം"
+          ],
+          "answers": {
+            "plot_1": "Farmer Murugan: For your 78% flood damage, you are eligible for the PMFBY Flood Mid-Season Claim (up to ₹30,000/acre grant) and KCC Emergency Debt Rescheduling for 3-5 years. First step: Download the AgriShield Satellite Report and submit it at Punnainallur PACCS society within 72 hours.",
+            "plot_2": "Farmer Lakshmi: For your 30% partial flood impact, you qualify for the KCC Emergency Working Capital Top-Up (₹40,000) and PMFBY partial yield claim. First step: Request a joint inspection endorsement with your AgriShield report at Kallaperambur Cooperative Bank.",
+            "plot_3": "Farmer Selvam: Because your crop is 100% healthy, you qualify for the Standard Kisan Credit Card (KCC) Crop Loan up to ₹3,00,000 at 4% subsidized interest or Agriculture Infrastructure Fund (AIF) for solar pumps. First step: Apply online on JanSamarth portal or visit SBI Vallam branch."
+          }
+        },
+        "loan_requirements": {
+          "keywords": [
+            "documents",
+            "requirement",
+            "papers",
+            "patta",
+            "aadhaar",
+            "ஆவணங்கள்",
+            "தேவை",
+            "பட்டா",
+            "दस्तावेज",
+            "कागजात",
+            "పత్రాలు",
+            "పాస్ బుక్",
+            "ದಾಖಲೆಗಳು",
+            "രേഖകൾ"
+          ],
+          "answers": {
+            "plot_1": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_2": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_3": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt."
+          }
+        },
+        "first_step": {
+          "keywords": [
+            "first step",
+            "what to do first",
+            "procedure",
+            "முதல் படி",
+            "முதலில் என்ன",
+            "पहला कदम",
+            "మొదటి అడుగు",
+            "ಮೊದಲ ಹೆಜ್ಜೆ",
+            "ആദ്യ പടി"
+          ],
+          "answers": {
+            "plot_1": "FIRST STEP: 1. Click 'Download Claim PDF' to get your satellite proof. 2. Notify your Village Administrative Officer (VAO) within 72 hours. 3. Click 'Apply for Loan' to register your claim instantly.",
+            "plot_2": "FIRST STEP: 1. Open field drainage channels. 2. Download your AgriShield satellite report. 3. File a partial claim with your local cooperative bank.",
+            "plot_3": "FIRST STEP: 1. Maintain scheduled irrigation for 3 more days. 2. Drain field 10 days before harvest. 3. Apply for seasonal KCC credit for the upcoming cycle."
+          }
+        },
+        "weather_advice": {
+          "keywords": [
+            "weather",
+            "forecast",
+            "rain",
+            "temperature",
+            "humidity",
+            "வானிலை",
+            "மழை",
+            "வெப்பநிலை",
+            "मौसम",
+            "बारिश",
+            "వాతావరణం",
+            "వర్షం",
+            "ಹವಾಮಾನ",
+            "ಮಳೆ",
+            "കാലാവസ്ഥ",
+            "മഴ"
+          ],
+          "answers": {
+            "plot_1": "Weather update: Northeast monsoon rain recorded 210mm with 94% humidity. Satellite shows high soil saturation. Sluices must remain open to flush standing floodwater.",
+            "plot_2": "Weather update: 210mm monsoon storm passed. Humidity 94%. Drainage is functioning well. Plan for 1% Potassium Chloride foliar spray once water drops below 2cm.",
+            "plot_3": "Weather update: Clear skies, temperature 29°C, humidity 72%, rainfall 10mm. Ideal grain-filling weather. No adverse meteorological risk detected."
+          }
+        }
+      },
+      "alerts": {
+        "water_stress": "ಎಚ್ಚರಿಕೆ: ಗದ್ದೆಯಲ್ಲಿ ನೀರಿನ ಕೊರತೆ ಕಂಡುಬಂದಿದೆ. 48 ಗಂಟೆಗಳಲ್ಲಿ ನೀರು ಹಾಯಿಸಿ.",
+        "blast_risk": "ಎಚ್ಚರಿಕೆ: ಗಾಳಿಯಲ್ಲಿ ಶೇ. 88 ತೇವಾಂಶ. ಬೆಂಕಿ ರೋಗದ ಭೀತಿ ಇದೆ, ಶಿಲೀಂಧ್ರನಾಶಕ ಸಿಂಪಡಿಸಿ.",
+        "flood_warning": "ತೀವ್ರ ಎಚ್ಚರಿಕೆ: 180 ಮಿಮೀ ಭಾರಿ ಮಳೆ. ಗದ್ದೆಯ ನೀರು ಹರಿವಿನ ದಾರಿಗಳನ್ನು ತಕ್ಷಣ ತೆರೆಯಿರಿ.",
+        "all_clear": "ಬೆಳೆ ಆರೋಗ್ಯಕರವಾಗಿದೆ. ಸಾಮಾನ್ಯ ಕೃಷಿ ಕೆಲಸ ಮುಂದುವರಿಸಿ."
+      }
+    },
+    "ml": {
+      "name": "മലയാളം",
+      "speech_code": "ml-IN",
+      "greeting": "നമസ്കാരം! അഗ്രിഷീൽഡിലേക്ക് സ്വാഗതം.",
+      "ui": {
+        "title": "അഗ്രിഷീൽഡ് (AgriShield)",
+        "subtitle": "സംരക്ഷണം • പ്രവചനം • തെളിവ് • നഷ്ടപരിഹാരം",
+        "farmer_mode": "കർഷക വോയ്സ് മോഡ്",
+        "officer_mode": "ഓഫീസർ / ഇൻഷുറൻസ് മോഡ്",
+        "listen": "🔊 കേൾക്കുക",
+        "speaking": "🔊 സംസാരിക്കുന്നു...",
+        "ask_mic": "🎤 അഗ്രിഷീൽഡിനോട് ചോദിക്കൂ",
+        "listening": "🎙️ കേൾക്കുന്നു... സംസാരിക്കൂ",
+        "select_farmer": "കർഷകനെ തിരഞ്ഞെടുക്കുക",
+        "sample_banner": "മാതൃകാ ഡാറ്റ: സെന്റിനൽ-1 (റഡാർ), സെന്റിനൽ-2 ഉപഗ്രഹ മാതൃക അടിസ്ഥാനമാക്കിയത്.",
+        "status_healthy": "വിള ആരോഗ്യകരമാണ്",
+        "status_warning": "വിളയിൽ ജല അല്ലെങ്കിൽ രോഗ സമ്മർദ്ദം",
+        "status_danger": "ഗുരുതരമായ പ്രളയ നഷ്ടം സ്ഥിരീകരിച്ചു",
+        "tab_protect": "1. സംരക്ഷണം (Protect)",
+        "tab_predict": "2. പ്രവചനം (Predict)",
+        "tab_prove": "3. തെളിവ് (Prove)",
+        "tab_pay": "4. നഷ്ടപരിഹാരം (Pay)",
+        "tab_insurer": "5. ഇൻഷുറൻസ് ഡാഷ്‌ബോർഡ്",
+        "tab_compare": "കർഷക താരതമ്യം",
+        "health_score": "വിള ആരോഗ്യം",
+        "protection_score": "സംരക്ഷണ സ്കോർ",
+        "flood_area": "വെള്ളപ്പൊക്ക ബാധിത പ്രദേശം",
+        "claim_decision": "ഇൻഷുറൻസ് ക്ലെയിം ശുപാർശ",
+        "download_pdf": "📄 ക്ലെയിം റിപ്പോർട്ട് ഡൗൺലോഡ് (PDF)",
+        "quick_actions": "പെട്ടെന്നുള്ള ചോദ്യങ്ങൾ (ഐക്കൺ തൊടുക):",
+        "ivr_note": "യഥാർത്ഥത്തിൽ: ഇന്റർനെറ്റ് ഇല്ലാത്ത ഫോണുകളിൽ Twilio/Exotel വഴി IVR വോയ്‌സ് കോളും SMS ഉം ലഭ്യമാകും.",
+        "weather_title": "കാലാവസ്ഥയും ഉപഗ്രഹ വിഭവങ്ങളും",
+        "weather_subtitle": "സെന്റിനൽ-1 റഡാർ ഈർപ്പം, മഴ പ്രവചനം, കാർഷിക നിർദ്ദേശങ്ങൾ",
+        "chatbot_title": "അഗ്രിഷീൽഡ് AI സഹായി (Chatbot)",
+        "chatbot_subtitle": "വിള ആരോഗ്യം, കാലാവസ്ഥ, വായ്പകൾ എന്നിവയെക്കുറിച്ച് ചോദിക്കുക",
+        "loan_portal_title": "വിള വായ്പയും ദുരന്ത നിവാരണ പോർട്ടലും",
+        "apply_loan_btn": "📝 ഉടൻ വായ്പയ്ക്ക് / ആശ്വാസത്തിന് അപേക്ഷിക്കുക",
+        "damage_mapping_title": "ഏത് നാശനഷ്ടത്തിന് ഏത് വായ്പ ലഭിക്കും?",
+        "requirements_title": "ആവശ്യമായ രേഖകളും യോഗ്യതകളും",
+        "where_apply_title": "എവിടെ അപേക്ഷിക്കണം?",
+        "first_step_title": "കർഷകൻ ആദ്യം ചെയ്യേണ്ട നടപടി",
+        "loan_app_modal_title": "വിള വായ്പ / ആശ്വാസ അപേക്ഷാ ഫോം",
+        "satellite_proof_attached": "ഉപഗ്രഹ നാശനഷ്ട റിപ്പോർട്ട് സ്വമേധയാ ചേർത്തു",
+        "submit_application": "അപേക്ഷ സമർപ്പിക്കുക",
+        "application_success": "അപേക്ഷ വിജയകരമായി സമർപ്പിച്ചു!",
+        "chat_placeholder": "വിള, മഴ, വായ്പ എന്നിവയെക്കുറിച്ച് മലയാളത്തിൽ ചോദിക്കൂ...",
+        "suggestion_title": "ഇന്നത്തെ കാർഷിക നിർദ്ദേശം:"
+      },
+      "quick_buttons": {
+        "crop_health": {
+          "label": "വിള ആരോഗ്യം",
+          "icon": "🌱",
+          "question": "എന്റെ വിള എങ്ങനെയുണ്ട്?"
+        },
+        "water_stress": {
+          "label": "വെള്ളത്തിന്റെ ആവശ്യം",
+          "icon": "💧",
+          "question": "വിളയ്ക്ക് വെള്ളം നനയ്ക്കണമോ?"
+        },
+        "flood_risk": {
+          "label": "പ്രളയ സാധ്യത",
+          "icon": "🌧️",
+          "question": "പാടത്ത് വെള്ളം കയറുമോ?"
+        },
+        "claim_status": {
+          "label": "ഇൻഷുറൻസ് തുക",
+          "icon": "💰",
+          "question": "എനിക്ക് ഇൻഷുറൻസ് തുക ലഭിക്കുമോ?"
+        },
+        "weekly_task": {
+          "label": "ഈ ആഴ്ചയിലെ പണി",
+          "icon": "📅",
+          "question": "ഈ ആഴ്ച ഞാൻ എന്താണ് ചെയ്യേണ്ടത്?"
+        },
+        "loan_info": {
+          "label": "വിള വായ്പ",
+          "icon": "🏦",
+          "question": "എനിക്ക് എന്ത് വായ്പ ലഭിക്കും?"
+        },
+        "weather_info": {
+          "label": "കാലാവസ്ഥ വിവരം",
+          "icon": "🌦️",
+          "question": "ഇന്നത്തെ കാലാവസ്ഥ എങ്ങനെയുണ്ട്?"
+        }
+      },
+      "intents": {
+        "crop_health": {
+          "keywords": [
+            "വിള",
+            "ആരോഗ്യം",
+            "എങ്ങനെ",
+            "നില",
+            "ചെടി",
+            "crop",
+            "health"
+          ],
+          "answers": {
+            "plot_1": "മുരുകൻ, ആഴ്ച 9 ലെ ജലക്ഷാമവും ആഴ്ച 12 ലെ പ്രളയവും കാരണം നിങ്ങളുടെ 78% വിളയും നശിച്ചു.",
+            "plot_2": "ലക്ഷ്മി, സ്വർണ സബ്1 വിത്തും നല്ല ഡ്രെയിനേജും കാരണം പ്രളയത്തിലും നിങ്ങളുടെ 70% വിളയും സുരക്ഷിതമാണ്.",
+            "plot_3": "സെൽവം, നിങ്ങളുടെ വിള സീസണിലുടനീളം പച്ചപ്പോടെയും നല്ല ആരോഗ്യത്തോടെയും ഇരിക്കുന്നു."
+          }
+        },
+        "water_stress": {
+          "keywords": [
+            "വെള്ളം",
+            "നനയ്ക്കുക",
+            "ഈർപ്പം",
+            "ദാഹം",
+            "water",
+            "irrigation"
+          ],
+          "answers": {
+            "plot_1": "ആഴ്ച 9 ൽ പാടത്ത് 18% ജലക്ഷാമം ഉണ്ടായിരുന്നു, സമയത്തിന് നനയ്ക്കാത്തതിനാൽ വിള ക്ഷീണിച്ചു.",
+            "plot_2": "പാടത്ത് ആവശ്യത്തിന് ഈർപ്പമുണ്ട്, ഇപ്പോൾ കൂടുതൽ വെള്ളം ആവശ്യമില്ല.",
+            "plot_3": "മണ്ണിൽ നല്ല ഈർപ്പമുണ്ട്, അടുത്ത 3 ദിവസത്തേക്ക് സാധാരണ നന മതിയാകും."
+          }
+        },
+        "flood_risk": {
+          "keywords": [
+            "വെള്ളപ്പൊക്കം",
+            "പ്രളയം",
+            "മഴ",
+            "മുങ്ങുക",
+            "flood",
+            "rain"
+          ],
+          "answers": {
+            "plot_1": "റഡാർ സാറ്റലൈറ്റ് ഡാറ്റ പ്രകാരം നിങ്ങളുടെ പാടത്തിന്റെ 78% ഭാഗവും വെള്ളത്തിനടിയിലാണ്.",
+            "plot_2": "റഡാർ പരിശോധനയിൽ 30% സ്ഥലത്ത് മാത്രമേ വെള്ളമുള്ളൂ, വരമ്പുകൾ സുരക്ഷിതമാണ്.",
+            "plot_3": "നിങ്ങളുടെ പാടത്ത് പ്രളയ ഭീഷണിയില്ല, വിള സുരക്ഷിതമാണ്."
+          }
+        },
+        "claim_status": {
+          "keywords": [
+            "പണം",
+            "ഇൻഷുറൻസ്",
+            "ക്ലെയിം",
+            "നഷ്ടപരിഹാരം",
+            "claim",
+            "money",
+            "insurance"
+          ],
+          "answers": {
+            "plot_1": "നിങ്ങൾക്ക് 77% നഷ്ടം കണക്കാക്കി, അടിയന്തര ഇൻഷുറൻസ് ക്ലെയിം ശുപാർശ ചെയ്തു.",
+            "plot_2": "നിങ്ങൾക്ക് 38% ഭാഗിക നഷ്ടമുണ്ട്, പരിശോധനയ്ക്ക് ശേഷം ക്ലെയിം ലഭിക്കും.",
+            "plot_3": "നിങ്ങളുടെ വിളയ്ക്ക് നാശനഷ്ടമില്ല, അതിനാൽ ഇൻഷുറൻസ് ആവശ്യമില്ല."
+          }
+        },
+        "weekly_task": {
+          "keywords": [
+            "പണി",
+            "ജോലി",
+            "ആഴ്ച",
+            "വളം",
+            "മരുന്ന്",
+            "task",
+            "week"
+          ],
+          "answers": {
+            "plot_1": "ഉടൻ വരമ്പ് വെട്ടി വെള്ളം ഒഴുക്കിക്കളയുക, കൃഷി ഓഫീസറെ ബന്ധപ്പെടുക.",
+            "plot_2": "ഡ്രെയിനേജ് തുറന്നുവെക്കുക, വെള്ളം ഇറങ്ങിയ ശേഷം 1% പൊട്ടാസ്യം ക്ലോറൈഡ് തളിക്കുക.",
+            "plot_3": "കൊയ്ത്തിന് 10 ദിവസം മുമ്പ് പാടത്തെ വെള്ളം പൂർണ്ണമായി വറ്റിക്കുക."
+          }
+        },
+        "loan_advice": {
+          "keywords": [
+            "loan",
+            "credit",
+            "kcc",
+            "relief",
+            "money",
+            "scheme",
+            "apply",
+            "subsidy",
+            "கடன்",
+            "நிவாரணம்",
+            "லோன்",
+            "ऋण",
+            "कर्ज",
+            "రుణం",
+            "సహాయం",
+            "ಸಾಲ",
+            "ಪರಿಹಾರ",
+            "വായ്പ",
+            "ആശ്വാസം"
+          ],
+          "answers": {
+            "plot_1": "Farmer Murugan: For your 78% flood damage, you are eligible for the PMFBY Flood Mid-Season Claim (up to ₹30,000/acre grant) and KCC Emergency Debt Rescheduling for 3-5 years. First step: Download the AgriShield Satellite Report and submit it at Punnainallur PACCS society within 72 hours.",
+            "plot_2": "Farmer Lakshmi: For your 30% partial flood impact, you qualify for the KCC Emergency Working Capital Top-Up (₹40,000) and PMFBY partial yield claim. First step: Request a joint inspection endorsement with your AgriShield report at Kallaperambur Cooperative Bank.",
+            "plot_3": "Farmer Selvam: Because your crop is 100% healthy, you qualify for the Standard Kisan Credit Card (KCC) Crop Loan up to ₹3,00,000 at 4% subsidized interest or Agriculture Infrastructure Fund (AIF) for solar pumps. First step: Apply online on JanSamarth portal or visit SBI Vallam branch."
+          }
+        },
+        "loan_requirements": {
+          "keywords": [
+            "documents",
+            "requirement",
+            "papers",
+            "patta",
+            "aadhaar",
+            "ஆவணங்கள்",
+            "தேவை",
+            "பட்டா",
+            "दस्तावेज",
+            "कागजात",
+            "పత్రాలు",
+            "పాస్ బుక్",
+            "ದಾಖಲೆಗಳು",
+            "രേഖകൾ"
+          ],
+          "answers": {
+            "plot_1": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_2": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_3": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt."
+          }
+        },
+        "first_step": {
+          "keywords": [
+            "first step",
+            "what to do first",
+            "procedure",
+            "முதல் படி",
+            "முதலில் என்ன",
+            "पहला कदम",
+            "మొదటి అడుగు",
+            "ಮೊದಲ ಹೆಜ್ಜೆ",
+            "ആദ്യ പടി"
+          ],
+          "answers": {
+            "plot_1": "FIRST STEP: 1. Click 'Download Claim PDF' to get your satellite proof. 2. Notify your Village Administrative Officer (VAO) within 72 hours. 3. Click 'Apply for Loan' to register your claim instantly.",
+            "plot_2": "FIRST STEP: 1. Open field drainage channels. 2. Download your AgriShield satellite report. 3. File a partial claim with your local cooperative bank.",
+            "plot_3": "FIRST STEP: 1. Maintain scheduled irrigation for 3 more days. 2. Drain field 10 days before harvest. 3. Apply for seasonal KCC credit for the upcoming cycle."
+          }
+        },
+        "weather_advice": {
+          "keywords": [
+            "weather",
+            "forecast",
+            "rain",
+            "temperature",
+            "humidity",
+            "வானிலை",
+            "மழை",
+            "வெப்பநிலை",
+            "मौसम",
+            "बारिश",
+            "వాతావరణం",
+            "వర్షం",
+            "ಹವಾಮಾನ",
+            "ಮಳೆ",
+            "കാലാവസ്ഥ",
+            "മഴ"
+          ],
+          "answers": {
+            "plot_1": "Weather update: Northeast monsoon rain recorded 210mm with 94% humidity. Satellite shows high soil saturation. Sluices must remain open to flush standing floodwater.",
+            "plot_2": "Weather update: 210mm monsoon storm passed. Humidity 94%. Drainage is functioning well. Plan for 1% Potassium Chloride foliar spray once water drops below 2cm.",
+            "plot_3": "Weather update: Clear skies, temperature 29°C, humidity 72%, rainfall 10mm. Ideal grain-filling weather. No adverse meteorological risk detected."
+          }
+        }
+      },
+      "alerts": {
+        "water_stress": "മുന്നറിയിപ്പ്: പാടത്ത് ജലക്ഷാമം കണ്ടു. 48 മണിക്കൂറിനുള്ളിൽ നനയ്ക്കുക.",
+        "blast_risk": "മുന്നറിയിപ്പ്: വായുവിൽ 88% ഈർപ്പം. കുമിൾ രോഗ സാധ്യത, ഉടൻ മരുന്ന് തളിക്കുക.",
+        "flood_warning": "തീവ്ര മുന്നറിയിപ്പ്: 180 മി.മീ കനത്ത മഴ. പാടത്തെ ചാലുകൾ ഉടൻ തുറക്കുക.",
+        "all_clear": "വിള ആരോഗ്യകരമാണ്. സാധാരണ പരിചരണം തുടരുക."
+      }
+    },
+    "en": {
+      "name": "English",
+      "speech_code": "en-IN",
+      "greeting": "Welcome to AgriShield! Protect, Predict, Prove, and Pay.",
+      "ui": {
+        "title": "AgriShield",
+        "subtitle": "Protect • Predict • Prove • Pay",
+        "farmer_mode": "Farmer Voice Mode",
+        "officer_mode": "Officer / Insurer Mode",
+        "listen": "🔊 Listen",
+        "speaking": "🔊 Speaking...",
+        "ask_mic": "🎤 Ask AgriShield",
+        "listening": "🎙️ Listening... speak now",
+        "select_farmer": "Select Farmer",
+        "sample_banner": "Demo uses simulated data modeled on Sentinel-1/Sentinel-2.",
+        "status_healthy": "Crop is Healthy & Thriving",
+        "status_warning": "Crop Stress / Deficit Warning",
+        "status_danger": "Severe Flood Damage Detected",
+        "tab_protect": "1. PROTECT",
+        "tab_predict": "2. PREDICT",
+        "tab_prove": "3. PROVE",
+        "tab_pay": "4. PAY",
+        "tab_insurer": "5. INSURER DASHBOARD",
+        "tab_compare": "Compare Farmers",
+        "health_score": "Crop Health",
+        "protection_score": "Protection Score",
+        "flood_area": "Flooded Area",
+        "claim_decision": "Claim Recommendation",
+        "download_pdf": "📄 Download Claim PDF",
+        "quick_actions": "Quick Questions (Tap to Ask):",
+        "ivr_note": "Production: IVR voice call and SMS via Twilio/Exotel, works on feature phones with no internet.",
+        "weather_title": "Weather & Satellite Resources",
+        "weather_subtitle": "Sentinel-1 Radar Moisture, Rainfall Forecast & Agro-Meteorological Advisories",
+        "chatbot_title": "AgriShield AI Assistant",
+        "chatbot_subtitle": "Ask questions to analyze crop health, weather, and farm credit decisions",
+        "loan_portal_title": "Crop Loans & Disaster Relief Portal",
+        "apply_loan_btn": "📝 Apply for Loan / Relief Now",
+        "damage_mapping_title": "For Which Damage What Loan Applies?",
+        "requirements_title": "Required Documents & Eligibility",
+        "where_apply_title": "Where to Apply?",
+        "first_step_title": "First Step You Must Take",
+        "loan_app_modal_title": "Agricultural Credit & Relief Application",
+        "satellite_proof_attached": "Satellite Damage Verification Report Auto-Attached",
+        "submit_application": "Submit Application",
+        "application_success": "Application Successfully Registered!",
+        "chat_placeholder": "Ask about crop health, rain, flood, or loans...",
+        "suggestion_title": "Today's Agronomy Suggestion:"
+      },
+      "quick_buttons": {
+        "crop_health": {
+          "label": "Crop Health",
+          "icon": "🌱",
+          "question": "How is my crop?"
+        },
+        "water_stress": {
+          "label": "Water Need",
+          "icon": "💧",
+          "question": "Do I need water?"
+        },
+        "flood_risk": {
+          "label": "Flood Risk",
+          "icon": "🌧️",
+          "question": "Will it flood?"
+        },
+        "claim_status": {
+          "label": "Insurance Money",
+          "icon": "💰",
+          "question": "Can I get insurance money?"
+        },
+        "weekly_task": {
+          "label": "This Week Task",
+          "icon": "📅",
+          "question": "What should I do this week?"
+        },
+        "loan_info": {
+          "label": "Loans & Relief",
+          "icon": "🏦",
+          "question": "What loan can I get for my crop?"
+        },
+        "weather_info": {
+          "label": "Weather Info",
+          "icon": "🌦️",
+          "question": "What is the weather and satellite status?"
+        }
+      },
+      "intents": {
+        "crop_health": {
+          "keywords": [
+            "crop",
+            "health",
+            "how is",
+            "condition",
+            "growth",
+            "plant"
+          ],
+          "answers": {
+            "plot_1": "Farmer Murugan, water stress in week 9 and severe week 12 flooding damaged 78% of your plot.",
+            "plot_2": "Farmer Lakshmi, thanks to Swarna Sub1 seeds and drainage bunds, 70% of your crop survived the flood.",
+            "plot_3": "Farmer Selvam, your crop is vigorous, green, and completely healthy throughout the season."
+          }
+        },
+        "water_stress": {
+          "keywords": [
+            "water",
+            "irrigation",
+            "irrigate",
+            "dry",
+            "moisture",
+            "thirsty"
+          ],
+          "answers": {
+            "plot_1": "Week 9 showed an 18% water deficit. Skipping irrigation weakened the tillers before the storm.",
+            "plot_2": "Soil moisture is currently optimal. No irrigation needed; keep drainage sluices ready.",
+            "plot_3": "Soil moisture is healthy. Continue normal scheduled irrigation for the next 3 days."
+          }
+        },
+        "flood_risk": {
+          "keywords": [
+            "flood",
+            "rain",
+            "storm",
+            "waterlogging",
+            "submergence",
+            "inundated"
+          ],
+          "answers": {
+            "plot_1": "SAR Radar satellite confirms 78% of your plot is inundated with standing water.",
+            "plot_2": "SAR Radar confirms only 30% inundation due to protective perimeter bunds.",
+            "plot_3": "Zero flood risk in your plot. Topography and drainage are safe."
+          }
+        },
+        "claim_status": {
+          "keywords": [
+            "money",
+            "insurance",
+            "claim",
+            "payout",
+            "recommendation",
+            "compensation"
+          ],
+          "answers": {
+            "plot_1": "Your loss score is 0.77. We RECOMMEND APPROVAL for rapid claim payout.",
+            "plot_2": "Your loss score is 0.38. We recommend a TARGETED GROUND CHECK for partial claim.",
+            "plot_3": "No crop loss detected. NO CLAIM is recommended."
+          }
+        },
+        "weekly_task": {
+          "keywords": [
+            "task",
+            "do",
+            "week",
+            "fertilizer",
+            "spray",
+            "work",
+            "action"
+          ],
+          "answers": {
+            "plot_1": "Breach field bunds at drainage points immediately to drain excess water, and inform your local officer.",
+            "plot_2": "Keep drainage gates open and spray 1% Potassium Chloride once waters recede to stimulate recovery.",
+            "plot_3": "Grains are nearing maturity. Drain standing water completely 10 days before harvest."
+          }
+        },
+        "loan_advice": {
+          "keywords": [
+            "loan",
+            "credit",
+            "kcc",
+            "relief",
+            "money",
+            "scheme",
+            "apply",
+            "subsidy",
+            "கடன்",
+            "நிவாரணம்",
+            "லோன்",
+            "ऋण",
+            "कर्ज",
+            "రుణం",
+            "సహాయం",
+            "ಸಾಲ",
+            "ಪರಿಹಾರ",
+            "വായ്പ",
+            "ആശ്വാസം"
+          ],
+          "answers": {
+            "plot_1": "Farmer Murugan: For your 78% flood damage, you are eligible for the PMFBY Flood Mid-Season Claim (up to ₹30,000/acre grant) and KCC Emergency Debt Rescheduling for 3-5 years. First step: Download the AgriShield Satellite Report and submit it at Punnainallur PACCS society within 72 hours.",
+            "plot_2": "Farmer Lakshmi: For your 30% partial flood impact, you qualify for the KCC Emergency Working Capital Top-Up (₹40,000) and PMFBY partial yield claim. First step: Request a joint inspection endorsement with your AgriShield report at Kallaperambur Cooperative Bank.",
+            "plot_3": "Farmer Selvam: Because your crop is 100% healthy, you qualify for the Standard Kisan Credit Card (KCC) Crop Loan up to ₹3,00,000 at 4% subsidized interest or Agriculture Infrastructure Fund (AIF) for solar pumps. First step: Apply online on JanSamarth portal or visit SBI Vallam branch."
+          }
+        },
+        "loan_requirements": {
+          "keywords": [
+            "documents",
+            "requirement",
+            "papers",
+            "patta",
+            "aadhaar",
+            "ஆவணங்கள்",
+            "தேவை",
+            "பட்டா",
+            "दस्तावेज",
+            "कागजात",
+            "పత్రాలు",
+            "పాస్ బుక్",
+            "ದಾಖಲೆಗಳು",
+            "രേഖകൾ"
+          ],
+          "answers": {
+            "plot_1": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_2": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt.",
+            "plot_3": "Documents required: 1. Aadhaar Card, 2. Land Patta / Chitta / Adangal, 3. Bank Passbook copy, 4. AgriShield Satellite Damage Report PDF, and 5. Sowing enrollment receipt."
+          }
+        },
+        "first_step": {
+          "keywords": [
+            "first step",
+            "what to do first",
+            "procedure",
+            "முதல் படி",
+            "முதலில் என்ன",
+            "पहला कदम",
+            "మొదటి అడుగు",
+            "ಮೊದಲ ಹೆಜ್ಜೆ",
+            "ആദ്യ പടി"
+          ],
+          "answers": {
+            "plot_1": "FIRST STEP: 1. Click 'Download Claim PDF' to get your satellite proof. 2. Notify your Village Administrative Officer (VAO) within 72 hours. 3. Click 'Apply for Loan' to register your claim instantly.",
+            "plot_2": "FIRST STEP: 1. Open field drainage channels. 2. Download your AgriShield satellite report. 3. File a partial claim with your local cooperative bank.",
+            "plot_3": "FIRST STEP: 1. Maintain scheduled irrigation for 3 more days. 2. Drain field 10 days before harvest. 3. Apply for seasonal KCC credit for the upcoming cycle."
+          }
+        },
+        "weather_advice": {
+          "keywords": [
+            "weather",
+            "forecast",
+            "rain",
+            "temperature",
+            "humidity",
+            "வானிலை",
+            "மழை",
+            "வெப்பநிலை",
+            "मौसम",
+            "बारिश",
+            "వాతావరణం",
+            "వర్షం",
+            "ಹವಾಮಾನ",
+            "ಮಳೆ",
+            "കാലാവസ്ഥ",
+            "മഴ"
+          ],
+          "answers": {
+            "plot_1": "Weather update: Northeast monsoon rain recorded 210mm with 94% humidity. Satellite shows high soil saturation. Sluices must remain open to flush standing floodwater.",
+            "plot_2": "Weather update: 210mm monsoon storm passed. Humidity 94%. Drainage is functioning well. Plan for 1% Potassium Chloride foliar spray once water drops below 2cm.",
+            "plot_3": "Weather update: Clear skies, temperature 29°C, humidity 72%, rainfall 10mm. Ideal grain-filling weather. No adverse meteorological risk detected."
+          }
+        }
+      },
+      "alerts": {
+        "water_stress": "Water stress detected in your plot. Irrigate within 2 days.",
+        "blast_risk": "Blast disease risk HIGH: humidity > 85%. Spray Tricyclazole 75 WP or bio-agent immediately.",
+        "flood_warning": "FLASH FLOOD ALERT: 180mm rain recorded. Open perimeter drainage sluices immediately.",
+        "all_clear": "Crop conditions optimal. Continue normal intercultural operations."
+      }
+    }
+  }
+}

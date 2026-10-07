@@ -1,0 +1,134 @@
+{
+  "source": "Sample data modeled on Tamil Nadu Agricultural University (TNAU) Agronomy Guidelines. Verify with local agricultural officers before field implementation.",
+  "crop": "Paddy (Oryza sativa)",
+  "region": "Cauvery Delta Zone (Thanjavur)",
+  "season": "Samba / Thaladi Season",
+  "sowing_window": {
+    "recommended_start": "September 15",
+    "recommended_end": "October 15",
+    "optimal_soil_temperature_c": "25-32",
+    "notes": "Late sowing past Oct 20 increases vulnerability to northeast monsoon submergence during flowering."
+  },
+  "resilient_varieties": [
+    {
+      "name": "Swarna Sub1",
+      "type": "Flood / Submergence Tolerant",
+      "tolerance_duration_days": 14,
+      "survival_rate": "85-90% after complete submergence",
+      "duration_days": 140,
+      "recommended_for": "Low-lying, flood-prone blocks in Cauvery Delta"
+    },
+    {
+      "name": "CR 1009 Sub1",
+      "type": "Long Duration Flood Tolerant",
+      "tolerance_duration_days": 15,
+      "survival_rate": "80-88% after complete submergence",
+      "duration_days": 155,
+      "recommended_for": "Areas with persistent water stagnation"
+    },
+    {
+      "name": "Anna 4",
+      "type": "Drought Tolerant",
+      "tolerance_duration_days": 21,
+      "survival_rate": "Early vigor under water scarcity",
+      "duration_days": 105,
+      "recommended_for": "Tail-end areas prone to Cauvery canal deficit"
+    },
+    {
+      "name": "CO 51",
+      "type": "Short Duration High Yield",
+      "tolerance_duration_days": 5,
+      "survival_rate": "Standard tolerance",
+      "duration_days": 110,
+      "recommended_for": "Normal irrigated upland plots"
+    }
+  ],
+  "stage_tasks": [
+    {
+      "stage": "Nursery & Land Preparation",
+      "weeks": [1, 2],
+      "tasks": [
+        "Summer deep ploughing to expose dormant weed seeds and pathogens.",
+        "Strengthen field bunds to 30 cm height and 40 cm width to prevent runoff.",
+        "Seed treatment with Pseudomonas fluorescens @ 10g/kg seed."
+      ]
+    },
+    {
+      "stage": "Transplanting & Early Vegetative",
+      "weeks": [3, 4],
+      "tasks": [
+        "Transplant 18-20 day old seedlings with 2-3 seedlings per hill (20x10 cm spacing).",
+        "Basal fertilizer: NPK 50:50:50 kg/ha with 25 kg Zinc Sulphate.",
+        "Maintain thin water film (1-2 cm) during initial seedling establishment."
+      ]
+    },
+    {
+      "stage": "Active Tillering",
+      "weeks": [5, 7],
+      "tasks": [
+        "Apply 1st top dressing of Nitrogen (25 kg/ha).",
+        "Intermittent irrigation (alternate wetting and drying) to promote root depth.",
+        "Monitor leaf tips for blast spindle lesions and leaf folder folding."
+      ]
+    },
+    {
+      "stage": "Panicle Initiation & Booting",
+      "weeks": [8, 10],
+      "tasks": [
+        "Apply 2nd top dressing of Nitrogen and Potash (25 kg N + 25 kg K2O/ha).",
+        "Keep standing water 3-5 cm during panicle formation.",
+        "Inspect for water deficit stress; foliar spray 1% Urea + 1% KCl if canal supply lags."
+      ]
+    },
+    {
+      "stage": "Flowering & Grain Filling",
+      "weeks": [11, 13],
+      "tasks": [
+        "Clear all drainage channels and field bund outlets ahead of NE monsoon cyclonic bursts.",
+        "Maintain water level at 2-3 cm; avoid deep submergence of flowering panicles.",
+        "If heavy continuous rainfall (>100mm) is forecast, drain excess water immediately."
+      ]
+    },
+    {
+      "stage": "Maturity & Pre-Harvest",
+      "weeks": [14, 16],
+      "tasks": [
+        "Drain field water completely 10-14 days before intended harvest.",
+        "Harvest when 80-85% grains turn golden yellow and moisture reaches ~20%.",
+        "Thresh and sun-dry paddy to 13% moisture for safe grain storage."
+      ]
+    }
+  ],
+  "risk_rules": [
+    {
+      "risk_id": "blast_disease",
+      "name": "Paddy Blast Disease (Pyricularia oryzae)",
+      "condition_desc": "Relative humidity > 85% for 3 or more days during tillering (weeks 5-7)",
+      "trigger_eval": "humidity >= 85 and week in [5, 6, 7]",
+      "severity": "HIGH",
+      "advisory": "High humidity blast risk detected. Apply Tricyclazole 75 WP @ 1g/L or spray bio-agent Pseudomonas fluorescens @ 5g/L immediately."
+    },
+    {
+      "risk_id": "water_deficit_stress",
+      "name": "Canal Deficit / Vegetative Water Stress",
+      "condition_desc": "NDVI drops > 15% below seasonal baseline during panicle initiation (weeks 8-10)",
+      "trigger_eval": "ndvi_drop_pct > 15 and week in [8, 9, 10]",
+      "severity": "MEDIUM",
+      "advisory": "Crop stress dip detected. Irrigate plot within 48 hours or apply 1% urea foliar spray to preserve panicle development."
+    },
+    {
+      "risk_id": "monsoon_flood_submergence",
+      "name": "Flash Flood Submergence Risk",
+      "condition_desc": "Weekly rainfall exceeds 150mm during grain filling (weeks 11-13)",
+      "trigger_eval": "rainfall_mm >= 150 and week in [11, 12, 13]",
+      "severity": "CRITICAL",
+      "advisory": "Monsoon flood alert: >150mm rainfall recorded. Open perimeter drainage sluices and pump out stagnant water from field depressions."
+    }
+  ],
+  "pre_disaster_protocol": [
+    "1. Dig shallow diversion trenches across low-lying corners to channel runoff away.",
+    "2. Clear weeds and silt from plot discharge pipes connecting to secondary canals.",
+    "3. Secure harvested or nursery materials on elevated bund platforms.",
+    "4. Post-flood: Spray 1% Potassium Chloride (KCl) + 0.5% Zinc Sulphate to accelerate revival."
+  ]
+}

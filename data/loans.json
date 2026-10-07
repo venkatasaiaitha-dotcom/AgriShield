@@ -1,0 +1,162 @@
+{
+  "notice": "Official Agricultural Credit & Disaster Relief Guidelines based on PMFBY, RBI Kisan Credit Card (KCC), and Tamil Nadu State Disaster Response Fund (SDRF).",
+  "damage_schemes": [
+    {
+      "damage_type": "flood_submergence",
+      "damage_title": "Flood / Continuous Submergence Damage",
+      "icon": "🌊",
+      "severity_trigger": "Flooded area > 30% or SAR Backscatter drop > 3 dB with >150mm rainfall",
+      "schemes": [
+        {
+          "id": "pmfby_midseason",
+          "name": "PM Fasal Bima Yojana (PMFBY) Mid-Season Adversity Claim",
+          "type": "Disaster Insurance Compensation (Grant)",
+          "coverage_amount": "Up to ₹30,000 per acre (based on verified loss percentage)",
+          "interest_rate": "0% (Direct Benefit Transfer Grant)",
+          "tenure": "Direct settlement to bank account",
+          "eligibility": "Crops submerged for > 72 hours; loss verified by satellite SAR or joint survey.",
+          "requirements": [
+            "Aadhaar Card copy",
+            "Land Patta / Chitta / Adangal (Land ownership or tenancy record)",
+            "Bank Passbook copy (linked to Aadhaar for DBT)",
+            "AgriShield Satellite Damage Verification Report (attached automatically)",
+            "Sowing declaration / Crop insurance enrollment receipt"
+          ],
+          "where_to_apply": "Nearest Primary Agricultural Cooperative Credit Society (PACCS), Common Service Center (CSC), or National Crop Insurance Portal (pmfby.gov.in)",
+          "first_step": "STEP 1: Download your AgriShield Satellite Proof PDF and notify your Village Administrative Officer (VAO) or call 14447 (Kisan Call Center) within 72 hours of flood event."
+        },
+        {
+          "id": "kcc_disaster_rescheduling",
+          "name": "Kisan Credit Card (KCC) Emergency Debt Rescheduling & Fresh Line of Credit",
+          "type": "Restructured Agricultural Loan + Emergency Fresh Input Loan",
+          "coverage_amount": "Reschedule existing loan for 3 to 5 years + Fresh working capital up to ₹50,000",
+          "interest_rate": "4% per annum (with Government Interest Subvention)",
+          "tenure": "3 to 5 years moratorium",
+          "eligibility": "Farmers holding active KCC affected by declared natural calamity (>33% crop loss).",
+          "requirements": [
+            "Existing KCC loan passbook",
+            "AgriShield Satellite Inundation Proof",
+            "District Collectorate / Tahsildar Calamity Notification Certificate",
+            "No-dues statement from cooperative society"
+          ],
+          "where_to_apply": "Your existing lending Bank branch (SBI Agri, Indian Bank, Canara Bank) or District Central Cooperative Bank (DCCB)",
+          "first_step": "STEP 1: Visit your loan-issuing bank branch with the AgriShield SAR Satellite Flood report and request Form-B for Natural Calamity Loan Conversion."
+        },
+        {
+          "id": "sdrf_input_subsidy",
+          "name": "State Disaster Response Fund (SDRF) Input Subsidy Grant",
+          "type": "Direct Relief Grant (Non-repayable)",
+          "coverage_amount": "₹17,000 per hectare (paddy wetland crop damage > 33%)",
+          "interest_rate": "Non-repayable Government Relief Grant",
+          "tenure": "One-time Direct Benefit Transfer (DBT)",
+          "eligibility": "Paddy farmers in Cauvery Delta blocks facing severe crop lodging or root rot from water stagnation.",
+          "requirements": [
+            "Aadhaar card",
+            "Bank passbook IFSC details",
+            "VAO Adangal certificate",
+            "AgriShield Loss Score report"
+          ],
+          "where_to_apply": "Taluk Office / Revenue Inspector / Block Assistant Director of Agriculture (ADA)",
+          "first_step": "STEP 1: Submit Form-8 at the Taluk Tahsildar office with plot survey number and the AgriShield damage report."
+        }
+      ]
+    },
+    {
+      "damage_type": "water_deficit_drought",
+      "damage_title": "Drought / Canal Water Deficit Stress",
+      "icon": "☀️",
+      "severity_trigger": "NDVI drop > 15% during vegetative stage with rainfall deficit",
+      "schemes": [
+        {
+          "id": "kcc_drought_contingency",
+          "name": "KCC Contingent Irrigation & Input Credit",
+          "type": "Emergency Farm Working Capital Loan",
+          "coverage_amount": "Up to ₹40,000 per acre for borewell recharge, diesel pump rental, or micro-irrigation",
+          "interest_rate": "4% with timely repayment incentive",
+          "tenure": "12 to 18 months",
+          "eligibility": "Farmers with verified NDVI vegetative stress dip due to delayed canal release.",
+          "requirements": [
+            "KCC Land Passbook",
+            "Aadhaar card",
+            "AgriShield NDVI timeline showing stress dip"
+          ],
+          "where_to_apply": "Primary Agricultural Cooperative Society (PACCS) or Lead District Bank",
+          "first_step": "STEP 1: Submit an urgent micro-irrigation credit request to PACCS attaching the NDVI timeline proof."
+        }
+      ]
+    },
+    {
+      "damage_type": "pest_disease_blast",
+      "damage_title": "Blast Disease & Pest Epidemic Damage",
+      "icon": "🐛",
+      "severity_trigger": "Humidity > 85% for 3 days leading to blast lesions and yield loss",
+      "schemes": [
+        {
+          "id": "crop_protection_credit",
+          "name": "Emergency Plant Protection & Bio-Fungicide Input Subsidy",
+          "type": "Subsidized Input Supply / Short-Term Credit",
+          "coverage_amount": "Up to ₹15,000 per acre (50% input subsidy on approved bio-control agents)",
+          "interest_rate": "0% for government subsidized bio-agents; 4% for credit component",
+          "tenure": "Crop season (6 months)",
+          "eligibility": "Paddy farmers following integrated pest management protocols.",
+          "requirements": [
+            "Aadhaar card",
+            "Field photos / AgriShield disease risk advisory receipt",
+            "Crop insurance policy number"
+          ],
+          "where_to_apply": "Block Agricultural Extension Center (Uzhavar Sandhai / Agriculture Department Depot)",
+          "first_step": "STEP 1: Take AgriShield blast alert record to the Block Agriculture Extension Officer for subsidised Tricyclazole or Pseudomonas distribution."
+        }
+      ]
+    },
+    {
+      "damage_type": "normal_growth",
+      "damage_title": "Normal / Healthy Season (Expansion & Farm Assets)",
+      "icon": "🌱",
+      "severity_trigger": "Crop healthy (NDVI > 0.75, no flood damage)",
+      "schemes": [
+        {
+          "id": "standard_kcc_crop_loan",
+          "name": "Kisan Credit Card (KCC) Seasonal Production Credit",
+          "type": "Short-Term Crop Production Loan",
+          "coverage_amount": "Up to ₹3,00,000 (₹35,000 per acre for paddy)",
+          "interest_rate": "4% effective interest rate (with 3% prompt repayment incentive)",
+          "tenure": "12 months (repayable post-harvest)",
+          "eligibility": "All landholders and verified tenant farmers.",
+          "requirements": [
+            "Land Patta / Chitta document",
+            "Aadhaar & PAN card",
+            "Bank passbook",
+            "Recent passport photo"
+          ],
+          "where_to_apply": "Any Nationalized Bank, Regional Rural Bank (RRB), or PACCS",
+          "first_step": "STEP 1: Apply online via JanSamarth portal (jansamarth.in) or visit your nearest branch with land documents."
+        },
+        {
+          "id": "agri_infra_fund",
+          "name": "Agriculture Infrastructure Fund (AIF) Farm Modernization Loan",
+          "type": "Term Loan for Post-Harvest Assets & Equipment",
+          "coverage_amount": "Up to ₹2 Crore (3% interest subvention for 7 years)",
+          "interest_rate": "3% interest subvention below prevailing bank rate",
+          "tenure": "Up to 7 years including moratorium",
+          "eligibility": "Farmers, FPOs, and self-help groups creating bund protection, dryers, or storage.",
+          "requirements": [
+            "Project summary",
+            "Land document",
+            "KYC documents",
+            "Bank account statement (6 months)"
+          ],
+          "where_to_apply": "AIF Online Portal (agriinfra.dac.gov.in) or Commercial Banks",
+          "first_step": "STEP 1: Register on the AIF portal and select your preferred lending bank."
+        }
+      ]
+    }
+  ],
+  "common_documents": [
+    { "name": "Aadhaar Card", "desc": "Identity verification and Direct Benefit Transfer (DBT) linkage" },
+    { "name": "Land Record (Patta / Chitta / Adangal)", "desc": "Proof of land cultivation and survey number" },
+    { "name": "Bank Passbook", "desc": "Active bank account linked to NPCI Aadhaar payment bridge" },
+    { "name": "AgriShield Satellite Damage Certificate", "desc": "Independent Sentinel-1/2 earth observation evidence PDF" },
+    { "name": "Crop Insurance Enrollment Receipt", "desc": "PMFBY premium debit advice or village sowing registry" }
+  ]
+}

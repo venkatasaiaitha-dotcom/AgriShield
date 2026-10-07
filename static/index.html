@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriShield: Protect, Predict, Prove, Pay</title>
+  
+  <!-- Fonts: Noto Sans with Indic Scripts Fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS for Maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Notice Banner -->
+  <div class="notice-banner">
+    <span class="badge">SAMPLE DATA</span>
+    <span id="banner-text">Demo uses simulated data modeled on Sentinel-1 (Radar) and Sentinel-2 (Optical)</span>
+  </div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">🛡️🌾</div>
+      <div>
+        <h1 id="app-title">AgriShield</h1>
+        <p id="app-subtitle">Protect • Predict • Prove • Pay</p>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <!-- Multilingual Language Picker with Native Scripts -->
+      <div class="lang-bar" id="lang-bar" title="Select Voice & UI Language">
+        <!-- Injected via JavaScript with native names & speaker icons -->
+      </div>
+
+      <!-- Mode Switcher: Farmer Voice Mode vs Officer Mode -->
+      <div class="mode-toggle">
+        <button id="btn-mode-farmer" class="mode-btn active" onclick="switchAppMode('farmer')">👨‍🌾 <span id="lbl-farmer-mode">Farmer Voice Mode</span></button>
+        <button id="btn-mode-officer" class="mode-btn" onclick="switchAppMode('officer')">🏢 <span id="lbl-officer-mode">Officer / Insurer Mode</span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Farmer Selector -->
+    <section class="farmer-selector-card">
+      <div class="farmer-selector-header">
+        <strong id="lbl-select-farmer" style="font-size: 1rem; color: #14532d;">Select Farmer Plot:</strong>
+        <span style="font-size: 0.8rem; color: #64748b;">Thanjavur, Tamil Nadu (Cauvery Delta)</span>
+      </div>
+      <div class="farmer-chips-grid" id="farmer-chips">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- ==================== FARMER VOICE MODE ==================== -->
+    <main id="farmer-mode-view" class="farmer-view">
+      
+      <!-- Traffic Light Face & Health Card -->
+      <div class="traffic-light-card border-green" id="traffic-card">
+        <div class="traffic-face" id="traffic-face">😊</div>
+        <div class="traffic-status-title" id="traffic-status-title">Crop is Healthy</div>
+        <div class="traffic-status-subtitle" id="traffic-status-subtitle">Vegetation canopy normal, no severe flood damage detected.</div>
+        
+        <!-- Big Round Voice Buttons -->
+        <div class="voice-action-row">
+          <button class="btn-voice-listen" id="btn-farmer-listen" onclick="speakCurrentFarmerStatus()">
+            <span id="btn-listen-icon">🔊</span>
+            <span id="btn-listen-text">Listen</span>
+          </button>
+
+          <button class="btn-voice-mic" id="btn-farmer-mic" onclick="toggleVoiceRecognition()">
+            <span>🎤</span>
+            <span id="btn-mic-text">Ask AgriShield</span>
+          </button>
+        </div>
+
+        <div id="voice-warning" style="display: none; color: #b45309; font-size: 0.85rem; margin-top: 8px;">
+          ⚠️ Voice not installed for this language on device. Falling back to English voice & on-screen icons.
+        </div>
+      </div>
+
+      <!-- 5 Large Picture Buttons for Non-Readers (Min 48px touch targets) -->
+      <div class="card">
+        <h4 style="margin-bottom: 12px; color: #166534;" id="lbl-quick-questions">Quick Questions (Tap to Ask):</h4>
+        <div class="picture-intents-grid" id="picture-intents">
+          <!-- Populated dynamically with large icons -->
+        </div>
+      </div>
+
+      <!-- Live Q&A Audio Bubble -->
+      <div class="qa-bubble-card" id="qa-bubble">
+        <div class="qa-question-box">
+          <span>🗣️</span>
+          <span id="qa-question-text">Farmer asked: ...</span>
+        </div>
+        <div class="qa-answer-box">
+          <span id="qa-answer-text">AgriShield response...</span>
+          <button class="btn-voice-listen" style="min-height: 40px; min-width: 90px; font-size: 0.85rem; padding: 4px 12px;" onclick="speakQaAnswer()">
+            🔊 Repeat
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Alert Card -->
+      <div class="card" id="farmer-alert-card" style="border-left: 6px solid #d97706;">
+        <div class="card-header">
+          <div class="card-title">
+            <span id="farmer-alert-icon" style="font-size: 1.5rem;">⚠️</span>
+            <span id="farmer-alert-title">Active Field Alert</span>
+          </div>
+          <button class="btn-voice-listen" style="min-height: 38px; min-width: 80px; font-size: 0.85rem; padding: 4px 10px;" onclick="speakFarmerAlert()">
+            🔊 Listen
+          </button>
+        </div>
+        <p id="farmer-alert-body" style="font-size: 1.05rem; font-weight: 600; color: #1f2937;">Loading advisory...</p>
+      </div>
+
+      <!-- ==================== 1. WEATHER & SATELLITE RESOURCES ==================== -->
+      <div class="card" id="weather-resources-section">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🌤️</span>
+            <span id="lbl-weather-title">Weather & Satellite Resources</span>
+          </div>
+          <span class="badge" style="background:#e0f2fe; color:#0369a1;">Live Earth Observation</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #64748b;" id="lbl-weather-sub">
+          Sentinel-1 Radar Moisture, Rainfall Forecast & Agro-Meteorological Advisories
+        </p>
+
+        <!-- Weather Metrics Bar -->
+        <div class="weather-metrics-grid">
+          <div class="weather-stat-box">
+            <div class="weather-stat-val" id="weather-temp">28°C</div>
+            <div class="weather-stat-lbl">🌡️ Temperature</div>
+          </div>
+          <div class="weather-stat-box">
+            <div class="weather-stat-val" id="weather-humidity">88%</div>
+            <div class="weather-stat-lbl">💧 Humidity</div>
+          </div>
+          <div class="weather-stat-box">
+            <div class="weather-stat-val" id="weather-rain">210 mm</div>
+            <div class="weather-stat-lbl">🌧️ Rainfall (Recorded)</div>
+          </div>
+          <div class="weather-stat-box">
+            <div class="weather-stat-val" id="weather-wind">22 km/h</div>
+            <div class="weather-stat-lbl">💨 Wind Speed</div>
+          </div>
+        </div>
+
+        <!-- Satellite Observation Resources -->
+        <div class="satellite-meter-grid">
+          <!-- Optical NDVI -->
+          <div class="sat-meter-box">
+            <div class="sat-meter-header">
+              <span>🌿 Sentinel-2 Optical (NDVI Canopy)</span>
+              <span class="sat-status-pill pill-warning" id="sat-ndvi-pill">Stress Detected</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+              <span>Canopy Index: <b id="sat-ndvi-val">0.27</b></span>
+              <span>Baseline: <b>0.76</b></span>
+            </div>
+            <div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">
+              Optical MultiSpectral measures chlorophyll absorption.
+            </div>
+          </div>
+
+          <!-- Radar SAR -->
+          <div class="sat-meter-box">
+            <div class="sat-meter-header">
+              <span>📡 Sentinel-1 SAR (Radar Moisture)</span>
+              <span class="sat-status-pill pill-blocked" id="sat-sar-pill">Submerged</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+              <span>Backscatter: <b id="sat-sar-db">-19.8 dB</b></span>
+              <span>Penetration: <b>100% All-Weather</b></span>
+            </div>
+            <div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">
+              C-Band microwave radar pierces rainclouds to detect surface water reflection.
+            </div>
+          </div>
+        </div>
+
+        <!-- Agro-Meteorological Advisory Banner -->
+        <div class="agro-advisory-banner">
+          <div>
+            <div style="font-weight: 800; font-size: 0.95rem; color: #166534;" id="lbl-suggestion-heading">
+              💡 Today's Agronomy & Weather Suggestion:
+            </div>
+            <div id="weather-agro-advisory" style="font-size: 0.95rem; color: #1f2937; margin-top: 2px;">
+              Loading suggestion...
+            </div>
+          </div>
+          <button class="btn-voice-listen" style="min-height: 36px; min-width: 80px; font-size: 0.8rem; padding: 2px 10px;" onclick="speakWeatherAdvisory()">
+            🔊 Listen
+          </button>
+        </div>
+      </div>
+
+      <!-- ==================== 2. AI CHATBOT (SAHAYAK) ==================== -->
+      <div class="chatbot-card" id="chatbot-section">
+        <div class="chatbot-header">
+          <div class="chatbot-title-box">
+            <h3><span>🤖</span> <span id="lbl-chatbot-title">AgriShield AI Assistant</span></h3>
+            <p id="lbl-chatbot-sub">Ask questions to analyze crop health, weather, and farm credit decisions</p>
+          </div>
+          <span class="chatbot-status-badge">Online • Multilingual AI</span>
+        </div>
+
+        <!-- Quick Question Chips -->
+        <div class="chat-quick-chips">
+          <button class="prompt-chip" onclick="askChatbotPrompt('weather_forecast')">🌦️ Weather Forecast</button>
+          <button class="prompt-chip" onclick="askChatbotPrompt('crop_health')">🌱 Analyze My Crop Health</button>
+          <button class="prompt-chip" onclick="askChatbotPrompt('loan_options')">🏦 What Loan Can I Get?</button>
+          <button class="prompt-chip" onclick="askChatbotPrompt('loan_docs')">📋 Documents Required</button>
+          <button class="prompt-chip" onclick="askChatbotPrompt('first_step')">🚨 What Is My First Step?</button>
+        </div>
+
+        <!-- Messages Thread -->
+        <div class="chatbot-messages-container" id="chatbot-messages">
+          <div class="chat-bubble bot">
+            <div id="chat-welcome-msg">
+              வணக்கம்! நான் உங்கள் அக்ரிஷீல்ட் AI உதவியாளர். உங்கள் பயிர் நலம், வானிலை, மற்றும் பயிர் கடன்கள் பற்றி என்னிடம் கேட்கலாம்.
+            </div>
+            <div class="chat-bubble-actions">
+              <button class="chat-listen-btn" onclick="speakText(document.getElementById('chat-welcome-msg').innerText)">🔊 Listen</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Bar with Mic & Send -->
+        <div class="chat-input-bar">
+          <button class="btn-chat-mic" id="btn-chat-mic" onclick="toggleChatMic()" title="Speak your question">
+            🎤
+          </button>
+          <input type="text" id="chat-input" class="chat-input-field" placeholder="Ask about crop health, rain, flood, or loans..." onkeypress="handleChatEnter(event)">
+          <button class="btn-chat-send" onclick="sendChatMessage()">
+            <span>Send</span> <span>➤</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ==================== 3. CROP LOANS & DISASTER RELIEF PORTAL ==================== -->
+      <div class="card" id="loans-portal-section">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🏛️</span>
+            <span id="lbl-loan-portal-title">Crop Loans & Disaster Relief Portal</span>
+          </div>
+          <span class="badge" style="background:#dcfce7; color:#15803d;">PMFBY & KCC Linked</span>
+        </div>
+
+        <!-- Recommended Scheme Hero Card for This Farmer -->
+        <div class="loan-hero-card">
+          <div class="loan-hero-header">
+            <div>
+              <span class="farmer-badge badge-severe" id="loan-rec-damage-tag">Flood Submergence Damage</span>
+              <h3 style="color: #14532d; font-size: 1.25rem; margin-top: 6px;" id="loan-rec-scheme-name">
+                PM Fasal Bima Yojana (PMFBY) Mid-Season Flood Disaster Relief
+              </h3>
+              <p style="font-size: 0.9rem; color: #334155;" id="loan-rec-relief-type">
+                Disaster Compensation Grant (100% Non-repayable Direct Benefit Transfer)
+              </p>
+            </div>
+            <div class="loan-amount-badge">
+              <div class="loan-amount-sub">Estimated Eligible Relief:</div>
+              <div class="loan-amount-num" id="loan-rec-amount">₹54,000</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn-voice-listen" style="background: #15803d; color: white; padding: 12px 24px; font-size: 1rem;" onclick="openLoanModal()">
+              <span id="btn-apply-loan-label">📝 Apply for Loan / Relief Now</span>
+            </button>
+            <button class="btn-voice-listen" style="background: white; color: #15803d; border: 2px solid #15803d; padding: 12px 18px; font-size: 0.9rem;" onclick="speakLoanRecommendation()">
+              🔊 Listen Relief Summary
+            </button>
+          </div>
+        </div>
+
+        <!-- "For Which Damage What Loan Applies" Mapping Guide -->
+        <div style="margin-top: 24px;">
+          <h4 style="color: #14532d; margin-bottom: 8px;" id="lbl-damage-mapping-title">
+            For Which Damage What Loan / Relief Applies?
+          </h4>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">
+            Clear official mapping between crop damage type, eligible credit schemes, and maximum benefits:
+          </p>
+
+          <div class="damage-mapping-grid">
+            <!-- 1. Flood -->
+            <div class="damage-mapping-card" style="border-top: 4px solid #0284c7;">
+              <div class="damage-type-header">
+                <span class="damage-type-icon">🌊</span>
+                <div>
+                  <div class="damage-type-title">Flood / Water Submergence</div>
+                  <span style="font-size: 0.75rem; color: #64748b;">Rain &gt; 150mm / SAR Inundation</span>
+                </div>
+              </div>
+              <div class="mapped-loan-name">1. PMFBY Mid-Season Claim (Grant)</div>
+              <p style="font-size: 0.8rem; color: #475569; margin-bottom: 6px;">Up to ₹30,000/acre non-repayable compensation.</p>
+              <div class="mapped-loan-name">2. KCC Debt Rescheduling</div>
+              <p style="font-size: 0.8rem; color: #475569;">Converts loan to 3-5 year moratorium with zero penalty.</p>
+            </div>
+
+            <!-- 2. Drought -->
+            <div class="damage-mapping-card" style="border-top: 4px solid #d97706;">
+              <div class="damage-type-header">
+                <span class="damage-type-icon">☀️</span>
+                <div>
+                  <div class="damage-type-title">Drought / Water Deficit</div>
+                  <span style="font-size: 0.75rem; color: #64748b;">NDVI Drop &gt; 15% / Canal Lag</span>
+                </div>
+              </div>
+              <div class="mapped-loan-name">1. KCC Contingent Irrigation Credit</div>
+              <p style="font-size: 0.8rem; color: #475569; margin-bottom: 6px;">Up to ₹40,000 for emergency pumps & micro-irrigation.</p>
+              <div class="mapped-loan-name">2. Interest Subvention Extension</div>
+              <p style="font-size: 0.8rem; color: #475569;">3% interest relief continued during dry spell.</p>
+            </div>
+
+            <!-- 3. Pest / Disease -->
+            <div class="damage-mapping-card" style="border-top: 4px solid #ef4444;">
+              <div class="damage-type-header">
+                <span class="damage-type-icon">🐛</span>
+                <div>
+                  <div class="damage-type-title">Pest / Blast Disease Attack</div>
+                  <span style="font-size: 0.75rem; color: #64748b;">Humidity &gt; 85% / Spindle lesions</span>
+                </div>
+              </div>
+              <div class="mapped-loan-name">1. Plant Protection Working Capital</div>
+              <p style="font-size: 0.8rem; color: #475569; margin-bottom: 6px;">₹15,000/acre for subsidized bio-fungicides & sprays.</p>
+              <div class="mapped-loan-name">2. PMFBY Post-Attack Yield Assessment</div>
+              <p style="font-size: 0.8rem; color: #475569;">Compensation based on localized crop cutting experiment.</p>
+            </div>
+
+            <!-- 4. Normal / Expansion -->
+            <div class="damage-mapping-card" style="border-top: 4px solid #16a34a;">
+              <div class="damage-type-header">
+                <span class="damage-type-icon">🌱</span>
+                <div>
+                  <div class="damage-type-title">Normal / Healthy Crop</div>
+                  <span style="font-size: 0.75rem; color: #64748b;">NDVI &gt; 0.75 / Standard season</span>
+                </div>
+              </div>
+              <div class="mapped-loan-name">1. Standard KCC Seasonal Crop Loan</div>
+              <p style="font-size: 0.8rem; color: #475569; margin-bottom: 6px;">Up to ₹3,00,000 at 4% subsidized interest rate.</p>
+              <div class="mapped-loan-name">2. Agri Infrastructure Fund (AIF)</div>
+              <p style="font-size: 0.8rem; color: #475569;">Equipment, bund fencing, and solar dryer term loans.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- "First Step What Farmer Must Take" Roadmap -->
+        <div style="margin-top: 24px;">
+          <h4 style="color: #14532d; margin-bottom: 8px;" id="lbl-first-step-title">
+            First Step What Farmer Must Take:
+          </h4>
+          <div class="first-step-flow">
+            <div class="first-step-box">
+              <div class="step-number-tag">1</div>
+              <h5 style="color: #14532d; margin-bottom: 4px;">Get Satellite Proof</h5>
+              <p style="font-size: 0.85rem; color: #334155;">
+                Click <b>Download Claim PDF</b> above. AgriShield's Sentinel-1/2 verified certificate serves as legal damage evidence.
+              </p>
+            </div>
+            <div class="first-step-box">
+              <div class="step-number-tag">2</div>
+              <h5 style="color: #14532d; margin-bottom: 4px;">Intimate Officer Within 72 Hours</h5>
+              <p style="font-size: 0.85rem; color: #334155;">
+                Inform your Village Administrative Officer (VAO), local agriculture extension depot, or call <b>14447</b> (Kisan Call Center).
+              </p>
+            </div>
+            <div class="first-step-box">
+              <div class="step-number-tag">3</div>
+              <h5 style="color: #14532d; margin-bottom: 4px;">Submit at Nearest PACCS / Bank</h5>
+              <p style="font-size: 0.85rem; color: #334155;">
+                Submit your Aadhaar, Land Patta, and AgriShield Satellite Report to your local cooperative bank for fast-track processing.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Required Documents & Where to Apply -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
+          <div style="background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border);">
+            <h5 style="color: #166534; margin-bottom: 8px;" id="lbl-requirements-title">📋 Required Documents Checklist:</h5>
+            <ul style="font-size: 0.85rem; color: #334155; display: flex; flex-direction: column; gap: 6px; padding-left: 18px;">
+              <li><b>Aadhaar Card:</b> Linked to bank account for DBT payment.</li>
+              <li><b>Land Record:</b> Patta / Chitta / Adangal ownership or tenancy proof.</li>
+              <li><b>Bank Passbook:</b> Active account with IFSC code.</li>
+              <li><b>AgriShield Certificate:</b> Sentinel-1/2 satellite report (Auto-attached).</li>
+              <li><b>Sowing Declaration:</b> VAO certificate or PMFBY policy slip.</li>
+            </ul>
+          </div>
+
+          <div style="background: #f8fafc; padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border);">
+            <h5 style="color: #166534; margin-bottom: 8px;" id="lbl-where-apply-title">📍 Where to Apply:</h5>
+            <div id="loan-where-apply-text" style="font-size: 0.9rem; color: #1e293b; line-height: 1.5;">
+              Loading nearest centers...
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- ==================== OFFICER / INSURER MODE ==================== -->
+    <main id="officer-mode-view" class="officer-view" style="display: none;">
+      
+      <!-- Tabs Navigation -->
+      <nav class="officer-nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('protect')" id="tab-btn-protect">1. PROTECT</button>
+        <button class="tab-btn" onclick="switchTab('predict')" id="tab-btn-predict">2. PREDICT</button>
+        <button class="tab-btn" onclick="switchTab('prove')" id="tab-btn-prove">3. PROVE</button>
+        <button class="tab-btn" onclick="switchTab('pay')" id="tab-btn-pay">4. PAY</button>
+        <button class="tab-btn" onclick="switchTab('insurer')" id="tab-btn-insurer">5. INSURER DASHBOARD</button>
+        <button class="tab-btn" onclick="switchTab('compare')" id="tab-btn-compare">🔄 Compare Farmers</button>
+      </nav>
+
+      <!-- TAB 1: PROTECT -->
+      <section class="tab-pane active" id="pane-protect">
+        <div class="grid-2">
+          <!-- Crop Season Plan & Sowing Window -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🌱 Crop Season Protection Plan</div>
+              <span class="badge" style="background:#e0f2fe; color:#0369a1;">Paddy (Samba Season)</span>
+            </div>
+            <p style="font-size: 0.9rem; margin-bottom: 12px; color: #475569;">
+              Sowing window: <b>September 15 to October 15</b>. Recommended flood-tolerant variety: <b>Swarna Sub1</b> (tolerates 14 days full submergence).
+            </p>
+            <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 12px;">
+              <div style="font-weight: 700; font-size: 0.9rem; color: #15803d; margin-bottom: 4px;">Farmer Variety Used:</div>
+              <div id="protect-farmer-variety" style="font-size: 0.95rem; font-weight: 600;">Loading...</div>
+            </div>
+
+            <!-- Protection Score Bar -->
+            <div class="progress-bar-container">
+              <div class="progress-labels">
+                <span>Protection Plan Compliance</span>
+                <span id="protect-score-pct">0%</span>
+              </div>
+              <div class="progress-bar-track">
+                <div class="progress-bar-fill" id="protect-score-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- Weekly Task Checklist -->
+            <h5 style="margin: 12px 0 8px; color: #1e293b;">Stage-Wise Weekly Task Checklist:</h5>
+            <ul class="task-list" id="protect-task-list">
+              <!-- Loaded dynamically -->
+            </ul>
+          </div>
+
+          <!-- Risk Calendar & Pre-disaster Actions -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📅 Risk Calendar & Early Warnings</div>
+              <span class="badge" style="background:#fef3c7; color:#b45309;">16 Weeks Evaluated</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">
+              Rules evaluated against weather: W5-7 Blast Humidity (>85%), W8-10 Water Stress, W11-13 Flood Submergence.
+            </p>
+
+            <div class="risk-calendar-weeks" id="risk-calendar-blocks">
+              <!-- 16 weeks generated dynamically -->
+            </div>
+
+            <div style="margin-top: 20px;">
+              <h5 style="color: #b91c1c; margin-bottom: 8px;">⚠️ Active Disasters / Risk Triggers:</h5>
+              <div id="protect-active-risks" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+
+            <div style="margin-top: 18px; background: #f0fdf4; padding: 12px; border-radius: 8px; border: 1px solid #86efac;">
+              <h5 style="color: #166534; margin-bottom: 4px;">🚨 Pre-Disaster Mitigation Protocol:</h5>
+              <ul style="font-size: 0.85rem; color: #1f2937; padding-left: 18px;" id="protect-predisaster-list">
+                <!-- Dynamically loaded -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: PREDICT -->
+      <section class="tab-pane" id="pane-predict">
+        <div class="grid-2">
+          <!-- Leaflet Health Map & Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🗺️ Plot Health Map (Thanjavur)</div>
+              <span class="badge" id="predict-health-badge" style="background:#dcfce7; color:#15803d;">Healthy</span>
+            </div>
+            <div id="map-predict" class="map-container"></div>
+            <div style="margin-top: 10px; font-size: 0.8rem; color: #64748b;">
+              Polygon styled by vegetation health: <span style="color:#16a34a; font-weight:700;">Green (Healthy)</span> | <span style="color:#d97706; font-weight:700;">Yellow (Stress Dip)</span> | <span style="color:#dc2626; font-weight:700;">Red (Severe Loss)</span>
+            </div>
+          </div>
+
+          <!-- NDVI Timeline Chart.js -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📈 16-Week NDVI Vegetation Timeline</div>
+              <span class="badge" style="background:#e0f2fe; color:#0369a1;">Sentinel-2 Optical</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="chart-ndvi"></canvas>
+            </div>
+            <div style="font-size: 0.8rem; color: #475569; margin-top: 8px;">
+              Threshold rule: Stress flagged if NDVI falls > 15% below seasonal baseline (0.85 × Baseline).
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Alert SMS & IVR Simulator -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📱 SMS & IVR Alert Simulator (Feature Phone Integration)</div>
+            <span class="badge" style="background:#f1f5f9; color:#334155;">Offline Feature Phone Ready</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: center;">
+            
+            <div class="phone-mockup">
+              <div class="phone-speaker"></div>
+              <div class="phone-screen">
+                <div style="font-size: 0.75rem; color: #64748b; margin-bottom: 6px; display: flex; justify-content: space-between;">
+                  <span>AgriShield SMS</span>
+                  <span>10:30 AM</span>
+                </div>
+                <div class="sms-bubble" id="sms-text-display">
+                  Loading SMS alert...
+                </div>
+                <button class="phone-btn-action" onclick="playIvrVoiceCall()">
+                  📞 Play Voice Call / IVR
+                </button>
+              </div>
+            </div>
+
+            <div style="max-width: 460px;">
+              <h4 style="color: #14532d; margin-bottom: 8px;">Automated Farmer Outreach Channel</h4>
+              <p style="font-size: 0.9rem; color: #475569; margin-bottom: 12px;">
+                Farmers receive localized push advisories in their spoken dialect directly on low-cost feature phones via voice IVR and SMS without needing mobile data or smartphones.
+              </p>
+              <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.85rem; color: #334155;">
+                <b>Production Architecture Note:</b><br>
+                Integrated with Twilio / Exotel Indian Telecom Gateways for text-to-speech outbound calls in Tamil, Hindi, Telugu, Kannada, and Malayalam.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: PROVE -->
+      <section class="tab-pane" id="pane-prove">
+        <div class="grid-2">
+          <!-- SAR Radar Flood Cell Map -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🛰️ Sentinel-1 SAR Flood Overlay (20x20 Grid)</div>
+              <div style="display: flex; gap: 6px;">
+                <button class="btn-voice-listen" id="btn-toggle-view" style="min-height: 32px; min-width: 120px; font-size: 0.8rem; padding: 4px 10px;" onclick="toggleRadarOpticalView()">
+                  ☁️ Switch to Optical View
+                </button>
+              </div>
+            </div>
+            <div id="map-prove" class="map-container">
+              <!-- Leaflet Map with Grid -->
+            </div>
+            <div id="optical-warning-box" style="display:none; margin-top: 10px; background: #fee2e2; color: #991b1b; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem;">
+              ⚠️ <b>Optical Sentinel-2 Blotted:</b> 92% Cloud Cover during flood week. Optical imagery fails completely. SAR Radar C-Band penetrates rainclouds with 100% surface water reflection.
+            </div>
+          </div>
+
+          <!-- Radar Metrics & Big Number -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📊 Radar Evidence Metrics</div>
+              <span class="badge" style="background:#fee2e2; color:#dc2626;">Flooded Cells Detected</span>
+            </div>
+
+            <div class="metrics-row">
+              <div class="metric-box">
+                <div class="metric-box-val" id="prove-flooded-pct" style="color: #dc2626;">0%</div>
+                <div class="metric-box-label">Flooded Plot Area</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-box-val" id="prove-sar-before">-8.1 dB</div>
+                <div class="metric-box-label">SAR Pre-Storm (Vegetated)</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-box-val" id="prove-sar-after">-19.8 dB</div>
+                <div class="metric-box-label">SAR Post-Storm (Water Drop)</div>
+              </div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.9rem; color: #334155;">
+              <strong style="color: #0f172a;">Physical Detection Rule:</strong><br>
+              A cell is flagged as flooded if <code style="background:#e2e8f0; padding:2px 4px; border-radius:4px;">(after_dB - before_dB &lt; -3.0 dB) AND (after_dB &lt; -15.0 dB)</code>.<br>
+              Smooth water surfaces specularly reflect radar pulses away from the Sentinel-1 sensor, causing an unmistakable backscatter collapse from -8 dB to -20 dB.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: PAY -->
+      <section class="tab-pane" id="pane-pay">
+        
+        <!-- Decision Banner -->
+        <div class="decision-banner-box" id="pay-decision-banner" style="background: #16a34a;">
+          <div class="decision-badge-large" id="pay-decision-text">RECOMMEND APPROVE</div>
+          <div class="decision-sub-info" id="pay-decision-sub">Estimated Payout: 85% of Maximum Coverage</div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Algorithmic Score Breakdown -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🧮 Transparent Claims Calculation Formula</div>
+              <span class="badge" style="background:#e0f2fe; color:#0369a1;">Zero Black Box</span>
+            </div>
+            
+            <div style="font-family: monospace; background: #0f172a; color: #38bdf8; padding: 14px; border-radius: 8px; font-size: 0.95rem; margin-bottom: 14px;">
+              Loss Score = (0.5 × NDVI Drop) + (0.4 × Flooded Fraction) + (0.1 × Weather Severity)
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;">
+                <span>NDVI Drop (Weight 50%):</span>
+                <b id="pay-calc-ndvi">0.67 × 0.5 = 0.335</b>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;">
+                <span>Flooded Fraction (Weight 40%):</span>
+                <b id="pay-calc-flood">0.78 × 0.4 = 0.312</b>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;">
+                <span>Weather Severity (Weight 10%):</span>
+                <b id="pay-calc-weather">0.90 × 0.1 = 0.090</b>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 1.05rem; color: #166534; font-weight: 800; padding-top: 4px;">
+                <span>Total Combined Loss Score:</span>
+                <span id="pay-calc-total">0.737</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #0284c7; font-weight: 700;">
+                <span>Evidence Confidence:</span>
+                <span id="pay-confidence-score">92%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plain Language Reasoning & Download Button -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="card-header">
+                <div class="card-title">📝 Algorithmic Reasoning & Actions</div>
+              </div>
+              <p id="pay-reasoning-text" style="font-size: 1rem; color: #334155; line-height: 1.6; margin-bottom: 16px;">
+                Loading reasoning...
+              </p>
+              <div style="background: #f8fafc; border-left: 4px solid #64748b; padding: 10px 14px; font-size: 0.85rem; color: #475569; margin-bottom: 16px;">
+                <b>Regulatory Compliance Disclaimer:</b> Satellite evidence supports but does not replace ground verification for borderline cases.
+              </div>
+            </div>
+
+            <!-- PDF Download Button -->
+            <button class="btn-voice-listen" style="width: 100%; border-radius: 10px; font-size: 1.05rem;" onclick="downloadClaimPdf()">
+              📄 Download Claim PDF (ReportLab)
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: INSURER DASHBOARD -->
+      <section class="tab-pane" id="pane-insurer">
+        
+        <!-- Speed Comparison Callout Banner -->
+        <div class="speed-compare-banner">
+          <div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 4px;">⚡ Automated Rapid Settlement Engine</h3>
+            <p style="opacity: 0.9; font-size: 0.9rem;">From physical loss to verified claim payout recommendation.</p>
+          </div>
+          <div style="display: flex; gap: 20px;">
+            <div style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 0.8rem; text-transform: uppercase;">AgriShield AI</div>
+              <div style="font-size: 1.3rem; font-weight: 800; color: #86efac;">3 Minutes</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 0.8rem; text-transform: uppercase;">Manual Surveyor</div>
+              <div style="font-size: 1.3rem; font-weight: 800; color: #fca5a5;">4-8 Weeks</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insurer Ranking Table -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📋 Regional Claims Triage Ranking (Cauvery Basin)</div>
+            <span class="badge" style="background:#e0f2fe; color:#0369a1;">3 Plots Audited</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="claims-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Farmer</th>
+                  <th>Variety</th>
+                  <th>Compliance</th>
+                  <th>Flooded %</th>
+                  <th>Loss Score</th>
+                  <th>Confidence</th>
+                  <th>Decision</th>
+                  <th>Fast Track</th>
+                </tr>
+              </thead>
+              <tbody id="insurer-table-body">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Fraud Anomaly Check Card -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🔍 Regional Anomaly & Fraud Cross-Verification</div>
+            <span class="badge" id="fraud-status-badge" style="background:#dcfce7; color:#15803d;">Verified</span>
+          </div>
+          <p id="fraud-details-text" style="font-size: 0.9rem; color: #334155;">
+            Cross-referencing plot damage against 10km spatial buffer in Cauvery Delta...
+          </p>
+        </div>
+
+      </section>
+
+      <!-- TAB 6: COMPARE FARMERS -->
+      <section class="tab-pane" id="pane-compare">
+        <div class="card" style="margin-bottom: 20px; background: #f8fafc;">
+          <h3 style="color: #14532d; margin-bottom: 6px;">⚖️ Side-by-Side Impact Analysis: Murugan vs Lakshmi</h3>
+          <p style="font-size: 0.95rem; color: #475569;">
+            Both farmers experienced the <b>exact same Week 12 monsoon flood (210 mm rainfall)</b> in Thanjavur.
+            Here is physical proof of how following the AgriShield Protection Plan mitigated climate risk.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <!-- Murugan Card -->
+          <div class="compare-card loser">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 style="color: #991b1b;">Farmer Murugan (No Plan)</h3>
+              <span class="badge badge-severe">Severe Loss</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+              <li>🌾 <b>Variety:</b> CR 1009 (Standard / Non-tolerant)</li>
+              <li>🛡️ <b>Protection Plan Score:</b> 25% (Ignored advisories)</li>
+              <li>💧 <b>Water Drainage:</b> Channels uncleared, bunds flooded</li>
+              <li>🌊 <b>Plot Flooded:</b> 78% of field inundated</li>
+              <li>📉 <b>NDVI Collapse:</b> From 0.76 down to 0.25 (Collapses)</li>
+              <li>💰 <b>Calculated Loss Score:</b> 0.74 (Heavy loss)</li>
+              <li>📋 <b>Outcome:</b> Recommend Full Claim Payout (Season Wiped)</li>
+            </ul>
+          </div>
+
+          <!-- Lakshmi Card -->
+          <div class="compare-card winner">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 style="color: #166534;">Farmer Lakshmi (Followed Plan)</h3>
+              <span class="badge badge-resilient">85% Resilient</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+              <li>🌾 <b>Variety:</b> Swarna Sub1 (Flood-Tolerant Sub1 gene)</li>
+              <li>🛡️ <b>Protection Plan Score:</b> 85% (Complied with steps)</li>
+              <li>💧 <b>Water Drainage:</b> Perimeter drainage sluices opened</li>
+              <li>🌊 <b>Plot Flooded:</b> 30% limited waterlogging</li>
+              <li>📈 <b>NDVI Resilient:</b> Kept at 0.55 (survived submergence)</li>
+              <li>💰 <b>Calculated Loss Score:</b> 0.34 (Controlled partial damage)</li>
+              <li>📋 <b>Outcome:</b> Targeted Ground Check (70% Crop Saved!)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ==================== LOAN APPLICATION MODAL ==================== -->
+  <div class="modal-overlay" id="loan-application-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+          <span>📝</span>
+          <span id="modal-title-text">Agricultural Credit & Relief Application</span>
+        </h3>
+        <button class="modal-close-btn" onclick="closeLoanModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modal-form-content">
+        <div style="background: #f0fdf4; border: 1px solid #86efac; padding: 12px; border-radius: 8px; font-size: 0.85rem; color: #14532d; display: flex; align-items: center; gap: 8px;">
+          <span>🛰️</span>
+          <span><b>Verified Satellite Proof Auto-Attached:</b> Sentinel-1 SAR & Sentinel-2 damage analysis attached with legal tamper-proof timestamp.</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Farmer Name</label>
+            <input type="text" id="loan-app-farmer-name" class="form-input" readonly style="background:#f1f5f9;">
+          </div>
+          <div class="form-group">
+            <label>Village & District</label>
+            <input type="text" id="loan-app-village" class="form-input" readonly style="background:#f1f5f9;">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Selected Relief / Loan Scheme</label>
+          <input type="text" id="loan-app-scheme-name" class="form-input" readonly style="background:#f1f5f9; font-weight:700; color:#15803d;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Verified Damage Type</label>
+            <input type="text" id="loan-app-damage-type" class="form-input" readonly style="background:#f1f5f9;">
+          </div>
+          <div class="form-group">
+            <label>Eligible Relief / Loan Amount (₹)</label>
+            <input type="number" id="loan-app-amount" class="form-input" style="font-weight:800; color:#14532d;">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Plot Survey Number (Patta/Chitta)</label>
+            <input type="text" id="loan-app-survey" class="form-input" value="142/3B (Delta Block)">
+          </div>
+          <div class="form-group">
+            <label>Aadhaar Last 4 Digits</label>
+            <input type="text" id="loan-app-aadhaar" class="form-input" value="8821" maxlength="4">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Lending Bank / PACCS Society</label>
+          <input type="text" id="loan-app-bank" class="form-input" value="Primary Agricultural Cooperative Credit Society (PACCS) / Indian Bank">
+        </div>
+      </div>
+
+      <!-- Success Receipt View inside Modal -->
+      <div class="modal-body" id="modal-receipt-content" style="display: none;">
+        <div style="text-align: center; padding: 20px 10px;">
+          <div style="font-size: 3.5rem; line-height: 1; margin-bottom: 10px;">✅</div>
+          <h3 style="color: #15803d; font-size: 1.4rem; margin-bottom: 6px;">Application Registered Successfully!</h3>
+          <p style="color: #64748b; font-size: 0.9rem;">Satellite verified claim forwarded to your local Cooperative Society.</p>
+        </div>
+
+        <div style="background: #f8fafc; border: 2px dashed #94a3b8; border-radius: 12px; padding: 16px;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px;">
+            <span style="color:#64748b;">Tracking Reference:</span>
+            <b id="receipt-ref-id" style="color:#1e3a8a; font-size: 1.05rem;">AGRI-RELIEF-TN-2026-9482</b>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
+            <span style="color:#64748b;">Farmer:</span>
+            <b id="receipt-farmer-name">Murugan</b>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
+            <span style="color:#64748b;">Scheme:</span>
+            <b id="receipt-scheme-name">PMFBY Mid-Season Flood Disaster Relief</b>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px;">
+            <span style="color:#64748b;">Disaster Grant Amount:</span>
+            <b id="receipt-amount" style="color:#16a34a; font-size: 1rem;">₹54,000</b>
+          </div>
+          <div style="border-top: 1px solid #e2e8f0; padding-top: 8px; font-size: 0.8rem; color:#475569;" id="receipt-instructions">
+            Please visit your local PACCS society within 5 working days with original Aadhaar and Patta.
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" id="modal-footer-actions">
+        <button class="tab-btn" onclick="closeLoanModal()" style="border: 1px solid #cbd5e1;">Cancel</button>
+        <button class="btn-voice-listen" style="background:#15803d; color:white; min-height:42px; min-width:140px; font-size:0.95rem;" onclick="submitLoanForm()">
+          Submit Application
+        </button>
+      </div>
+
+      <div class="modal-footer" id="modal-footer-receipt" style="display: none;">
+        <button class="btn-voice-listen" style="background:#0284c7; color:white; min-height:42px;" onclick="window.print()">
+          🖨️ Print Receipt Slip
+        </button>
+        <button class="btn-voice-listen" style="background:#15803d; color:white; min-height:42px;" onclick="closeLoanModal()">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet CDN JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- App Script -->
+  <script src="/static/app.js"></script>
+</body>
+</html>
